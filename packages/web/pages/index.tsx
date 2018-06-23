@@ -5,7 +5,7 @@ import Layout from "../components/Layouts";
 const Index: React.SFC<{}> = () => {
   return (
     <Layout>
-      <Button varient={"inverted"}>Hello World</Button>;
+      <Button>Hello World</Button>;
     </Layout>
   );
 };

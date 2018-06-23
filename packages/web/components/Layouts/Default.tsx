@@ -12,6 +12,9 @@ import DrawerCloseIcon from "../../icons/DrawerCloseIcon";
 
 const LayoutContainer = styled.div`
   display: flex;
+  @media all and (max-width: 480px) {
+    display: block;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -30,9 +33,20 @@ const DrawerWithExpansion = styled(Drawer)`
   .logo {
     padding-left: 1.275rem;
     padding-top: 0.7rem;
+    @media all and (max-width: 480px) {
+      display: none;
+    }
   }
   &.jsui-drawer-collapsed {
     width: 94px;
+    @media all and (max-width: 480px) {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      height: 65px;
+      min-height: auto;
+      display: flex;
+    }
   }
 `;
 
@@ -45,20 +59,35 @@ const DrawerMenuItemWithExpansion = styled(DrawerMenuItem)`
     & .jsui-drawermenu-text {
       display: none;
     }
+    @media all and (max-width: 480px) {
+      padding: 0;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 218px;
+      margin: 0;
+    }
   }
   &:hover .jsui-drawermenu-text > h4 {
     color: ${props => props.theme.primaryColor} !important;
   }
   &:hover svg {
     fill: ${props => props.theme.primaryColor};
-    height: 50px;
-    width: 50px;
+    @media all and (max-width: 480px) {
+      fill: #ffffff;
+    }
   }
   & svg {
     transition: all 0.2s ease;
   }
   &:hover {
     background: #fff;
+    @media all and (max-width: 480px) {
+      background: ${props => props.theme.primaryGradient};
+      height: 65px;
+      width: 65px;
+    }
   }
 `;
 
@@ -68,6 +97,10 @@ const AppbarWithExapansion = styled(Appbar)`
   margin-left: 94px;
   position: absolute;
   top: 0;
+  @media all and (max-width: 480px) {
+    margin-left: 0;
+    width: 100%;
+  }
   & > button {
     padding: 0;
     padding-top: 2px;
@@ -80,6 +113,10 @@ const AppbarWithExapansion = styled(Appbar)`
   &.jsui-appbar-expanded {
     width: calc(100% - 248px);
     margin-left: 248px;
+    @media all and (max-width: 480px) {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 `;
 

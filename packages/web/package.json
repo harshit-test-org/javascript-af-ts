@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "scripts":{
+    "dev":"next"
+  },
   "dependencies": {
     "@types/classnames": "^2.2.4",
     "@zeit/next-typescript": "^1.1.0",
