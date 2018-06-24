@@ -1,9 +1,11 @@
 {
   "name": "javascript-af-ts",
   "version": "0.0.1",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
   "description": "Javascript AF monorepo",
   "main": "index.js",
   "author": "Harshit Pant",

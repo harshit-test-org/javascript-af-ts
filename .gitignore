@@ -1,3 +1,10 @@
 .next/
 *.env
 node_modules/
+*.log
+.idea/
+.vscode/
+build/
+temp/
+dump.rdb
+dist
