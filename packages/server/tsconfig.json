@@ -19,6 +19,10 @@
     "experimentalDecorators": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*.test.ts",
+    "**/__tests__/*.test.tsx"
+  ],
   "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }
