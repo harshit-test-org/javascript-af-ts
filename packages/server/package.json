@@ -13,7 +13,7 @@
     "express": "^4.16.3",
     "graphql": "^14.0.0-rc.2",
     "neo4j-driver": "^1.6.1",
-    "neo4j-graphql-js": "^0.1.22",
+    "neo4j-graphql-js": "^0.1.23",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
