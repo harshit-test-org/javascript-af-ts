@@ -1,15 +1,13 @@
 import { ApolloServer, makeExecutableSchema } from "apollo-server";
 import { v1 as neo4j } from "neo4j-driver";
-import { augmentSchema } from "neo4j-graphql-js";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
+import { Request } from "express";
 
-const schema = augmentSchema(
-  makeExecutableSchema({
-    typeDefs,
-    resolvers
-  })
-);
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers
+});
 
 const driver = neo4j.driver(
   process.env.NEO4J_URI || "bolt://localhost:7687",
@@ -20,7 +18,15 @@ const driver = neo4j.driver(
 );
 
 const server = new ApolloServer({
-  context: { driver },
+  context: (req: Request) => {
+    return {
+      driver,
+      ip: req.ip,
+      user: {
+        id: "something" // Dummy user for now will get user from the session
+      }
+    };
+  },
   schema
 });
 

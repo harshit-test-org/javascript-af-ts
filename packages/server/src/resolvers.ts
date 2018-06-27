@@ -1,8 +1,9 @@
 import { neo4jgraphql } from "neo4j-graphql-js";
+import requireAuth from "./auth/requireAuth";
 
 const typeDefs = {
   Query: {
-    getUserByUsername: neo4jgraphql,
+    getUserByUsername: requireAuth.createResolver(neo4jgraphql),
     getRepositories: neo4jgraphql,
     getRepositoryBySlug: neo4jgraphql
   }
