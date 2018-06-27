@@ -1,12 +1,15 @@
 import { ApolloServer, makeExecutableSchema } from "apollo-server";
 import { v1 as neo4j } from "neo4j-driver";
+import { augmentSchema } from "neo4j-graphql-js";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
 
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
-});
+const schema = augmentSchema(
+  makeExecutableSchema({
+    typeDefs,
+    resolvers
+  })
+);
 
 const driver = neo4j.driver(
   process.env.NEO4J_URI || "bolt://localhost:7687",
