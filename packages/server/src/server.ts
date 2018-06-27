@@ -2,7 +2,19 @@ import { ApolloServer, makeExecutableSchema } from "apollo-server";
 import { v1 as neo4j } from "neo4j-driver";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
-import { Request } from "express";
+import * as express from "express";
+import * as session from "express-session";
+
+const app = express();
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: "auto" }
+  })
+);
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -18,7 +30,7 @@ const driver = neo4j.driver(
 );
 
 const server = new ApolloServer({
-  context: (req: Request) => {
+  context: (req: express.Request) => {
     return {
       driver,
       ip: req.ip,
@@ -30,7 +42,9 @@ const server = new ApolloServer({
   schema
 });
 
-server.listen().then(({ url }) => {
+server.applyMiddleware({ app, path: "/graphql" });
+
+app.listen(4000, () => {
   // tslint:disable-next-line
-  console.log(`GraphQL API read at ${url}`);
+  console.log(`Server started on https://localhost:4000`);
 });
