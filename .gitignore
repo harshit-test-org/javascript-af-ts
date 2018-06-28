@@ -1,5 +1,7 @@
 .next/
 *.env
+*.env.js
+*.env.prod.js
 node_modules/
 *.log
 .idea/
