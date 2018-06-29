@@ -28,7 +28,7 @@ const init = () => {
   passport.use(
     new GithubStrategy(
       {
-        clientID: process.env.GITHUB_CLIEN_TID,
+        clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
         passReqToCallback: true,
         scope: ["user"],

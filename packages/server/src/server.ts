@@ -3,9 +3,17 @@ import { v1 as neo4j } from "neo4j-driver";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import authInit from "./utils/passport";
+import * as initStore from "connect-redis";
+import * as dotenv from "dotenv";
+import * as Redis from "ioredis";
 import * as passport from "passport";
 import * as express from "express";
 import * as session from "express-session";
+
+dotenv.config({ path: `${__dirname}/../.env` });
+
+const RedisStore = initStore(session);
+const redisClient = new Redis(process.env.REDIS_HOST);
 
 const app = express();
 const schema = makeExecutableSchema({
@@ -14,9 +22,14 @@ const schema = makeExecutableSchema({
 });
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: process.env.COOKIE_SIGNING_SECRET,
+    cookie: { secure: process.env.NODE_ENV === "production" },
+    name: "ssid",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new RedisStore({
+      client: redisClient as any
+    })
   })
 );
 app.use(passport.initialize());
