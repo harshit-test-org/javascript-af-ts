@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String!
     username: String!
     githubToken: String!
+    profileUrl: String
     createdAt: String
     updatedAt: String
     repositories(first: Int = 10, offset: Int = 0): [Repository]
