@@ -3,6 +3,7 @@ import { Strategy as GithubStrategy } from "passport-github2";
 import { v4 as uuid } from "uuid";
 import { Request } from "express";
 import { driver } from "../server";
+import * as _ from "lodash";
 
 const init = () => {
   // Setup use serialization
@@ -56,6 +57,14 @@ const init = () => {
         };
         const db = driver.session();
         try {
+          const res = await db.run(
+            "MATCH (user:User {username: {username}}) RETURN user",
+            { username: githubUsername }
+          );
+          if (!_.isEmpty(res.records)) {
+            // Existing user just create their session
+            return done(null, res.records[0].get("user").properties);
+          }
           const result = await db.run(
             `
         CREATE (user:User {id: {id}, name: {name}, username:{username}, githubToken: {githubToken}, profileUrl:{profileUrl}, createdAt: datetime(), updatedAt: datetime() })
