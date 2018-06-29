@@ -6,8 +6,6 @@ Javascript af is a platform for developers to share their great work.
 
 [Jesse R Weigel](https://github.com/JesseRWeigel) (Founder / Project Manager),
 
-[Jvscrpt.r](https://github.com/jvscrptr) (Co-Founder / Frontend Dev),
-
 [pantharshit00](https://github.com/pantharshit00) (Co-Founder / Fullstack Dev)
 
 [Nicky Meuleman](https://github.com/NickyMeuleman) (Fullstack Dev)
@@ -52,7 +50,7 @@ This repository uses a monorepo to manage several parts of the application. [yar
 
 4.  Access the site and other tools
 
-    After running `yarn dev` you can access the local development server on http://localhost:3000 . You can access graphiql at http://localhost:4000/graphql.
+    After running `yarn dev` you can access the local development server on http://localhost:3000 . You can access graphiql at http://localhost:8080/graphql.
 
 ## License
 
