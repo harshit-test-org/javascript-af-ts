@@ -1,0 +1,7 @@
+{
+  "name": "@jsaf/shared",
+  "version": "0.0.1",
+  "description": "Shared Code",
+  "main": "index.js",
+  "license": "MIT"
+}

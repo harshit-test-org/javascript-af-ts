@@ -1,5 +1,5 @@
 {
-  "name": "javascript-af-ts",
+  "name": "jsaf",
   "version": "0.0.1",
   "workspaces": {
     "packages": [

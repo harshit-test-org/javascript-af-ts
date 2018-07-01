@@ -1,0 +1,7 @@
+{
+  "name": "@jsaf/controller",
+  "version": "0.0.1",
+  "description": "Reusable react controllers",
+  "main": "index.js",
+  "license": "MIT"
+}
