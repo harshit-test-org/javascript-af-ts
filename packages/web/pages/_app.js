@@ -1,9 +1,11 @@
 import App, { Container } from "next/app";
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import withApolloClient from "../apollo/with-apollo-client";
+import { ApolloProvider } from "react-apollo";
 import { baseTheme } from "javascript-af-ui";
 
-export default class MyApp extends App {
+class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -15,13 +17,17 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apolloClient } = this.props;
     return (
       <Container>
-        <ThemeProvider theme={baseTheme}>
-          <Component {...pageProps} />
-        </ThemeProvider>
+        <ApolloProvider client={apolloClient}>
+          <ThemeProvider theme={baseTheme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </ApolloProvider>
       </Container>
     );
   }
 }
+
+export default withApolloClient(MyApp);

@@ -10,21 +10,26 @@
   "dependencies": {
     "@types/classnames": "^2.2.4",
     "@zeit/next-typescript": "^1.1.0",
+    "apollo-boost": "^0.1.10",
     "babel-plugin-styled-components": "^1.5.1",
     "classnames": "^2.2.6",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
+    "isomorphic-unfetch": "^2.0.0",
     "javascript-af-ui": "0.0.23",
-    "next": "^6.0.3",
+    "next": "^6.1.1",
     "react": "^16.4.1",
+    "react-apollo": "^2.1.8",
     "react-dom": "^16.4.1",
     "styled-components": "^3.3.3"
   },
   "devDependencies": {
-    "@types/next": "^6.0.2",
-    "@types/react": "^16.4.1",
+    "@types/next": "^6.0.4",
+    "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
     "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
-    "jest": "^23.1.0",
-    "react-testing-library": "^4.0.2"
+    "babel-jest": "^23.2.0",
+    "jest": "^23.2.0",
+    "react-testing-library": "^4.1.0"
   }
 }

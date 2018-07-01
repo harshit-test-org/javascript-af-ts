@@ -4,6 +4,10 @@
   "workspaces": {
     "packages": [
       "packages/*"
+    ],
+    "nohoist": [
+      "**/neo4j-graphql-js",
+      "**/neo4j-graphql-js/**"
     ]
   },
   "description": "Javascript AF monorepo",
@@ -18,7 +22,7 @@
   },
   "devDependencies": {
     "npm-run-all": "^4.1.3",
-    "prettier": "^1.13.5",
+    "prettier": "^1.13.7",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
     "tslint-react": "^3.6.0"
