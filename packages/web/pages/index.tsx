@@ -1,28 +1,20 @@
 import * as React from "react";
 import { Button, Typography } from "javascript-af-ui";
 import Layout from "../components/Layouts";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-
-const SampleQuery = gql`
-  {
-    getRepositories {
-      githubName
-      id
-    }
-  }
-`;
+import { RepositoryController } from "@jsaf/controller";
 
 const Index: React.SFC<{}> = () => {
   return (
     <Layout>
       <Button>Hello World</Button>
-      <Query query={SampleQuery}>
-        {({ data }) => {
-          const { getRepositories } = data;
+      <RepositoryController>
+        {({ data, loading }) => {
+          if (loading) {
+            return <h1>loading</h1>;
+          }
           return (
             <>
-              {getRepositories.map(item => (
+              {data.map(item => (
                 <Typography type="h2" margin={0} key={item.id}>
                   {item.githubName}
                 </Typography>
@@ -30,7 +22,7 @@ const Index: React.SFC<{}> = () => {
             </>
           );
         }}
-      </Query>
+      </RepositoryController>
     </Layout>
   );
 };
