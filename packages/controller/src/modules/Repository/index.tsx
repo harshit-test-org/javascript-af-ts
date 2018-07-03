@@ -6,8 +6,12 @@ import { RepositoryQuery, RepositoryQuery_getRepositories } from "../../types";
 const RepositoryQuery = gql`
   query RepositoryQuery {
     getRepositories {
-      githubName
       id
+      githubName
+      githubOwner
+      slug
+      description
+      createdAt
     }
   }
 `;

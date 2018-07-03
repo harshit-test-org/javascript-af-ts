@@ -8,8 +8,12 @@
 // ====================================================
 
 export interface RepositoryQuery_getRepositories {
-  githubName: string;
   id: string;
+  githubName: string;
+  githubOwner: string;
+  slug: string;
+  description: string | null;
+  createdAt: string;
 }
 
 export interface RepositoryQuery {

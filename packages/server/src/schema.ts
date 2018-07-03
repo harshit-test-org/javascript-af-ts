@@ -24,6 +24,7 @@ const typeDefs = gql`
     githubUrl: String!
     githubName: String!
     githubOwner: String!
+    description: String
     owner: User @relation(name: "OWNER", direction: "IN")
     stars(first: Int = 10, offset: Int = 0): [Star]
       @relation(name: "STARRED_REPO", direction: "OUT")
