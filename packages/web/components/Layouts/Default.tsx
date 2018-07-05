@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Typography, Appbar, Drawer } from "javascript-af-ui";
+import { Typography, Appbar, Drawer, Button } from "javascript-af-ui";
 import { DrawerMenuItem } from "javascript-af-ui/Drawer";
 import classNames from "classnames";
 import HomeIcon from "../../icons/HomeIcon";
@@ -101,7 +101,7 @@ const AppbarWithExapansion = styled(Appbar)`
     margin-left: 0;
     width: 100%;
   }
-  & > button {
+  & > button.jsui-expansion-button {
     padding: 0;
     padding-top: 2px;
     margin: 0 1rem;
@@ -117,6 +117,12 @@ const AppbarWithExapansion = styled(Appbar)`
       width: 100%;
       margin-left: 0;
     }
+  }
+  & .right {
+    justify-content: flex-end;
+    display: flex;
+    flex: 1;
+    padding-right: 1.7rem;
   }
 `;
 
@@ -176,12 +182,19 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
             "jsui-appbar-expanded": !this.state.collapsed
           })}
         >
-          <button onClick={this.handleExpansionToggle}>
+          <button
+            className="jsui-expansion-button"
+            onClick={this.handleExpansionToggle}
+          >
             {this.state.collapsed ? <DrawerOpenIcon /> : <DrawerCloseIcon />}
           </button>
           <Typography type="h4" margin={0}>
             Home
           </Typography>
+          <div className="right">
+            {/* TODO replace this with a link */}
+            <Button>Login</Button>
+          </div>
         </AppbarWithExapansion>
         <ContentContainer
           className={classNames({

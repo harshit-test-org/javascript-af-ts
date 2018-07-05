@@ -8,7 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@jsaf/controller": "*",
+    "@jsaf/controller": "0.0.1",
     "@types/classnames": "^2.2.4",
     "@zeit/next-typescript": "^1.1.0",
     "apollo-boost": "^0.1.10",
@@ -17,10 +17,10 @@
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "isomorphic-unfetch": "^2.0.0",
-    "javascript-af-ui": "0.0.24",
+    "javascript-af-ui": "0.0.25",
     "next": "^6.1.1",
     "react": "^16.4.1",
-    "react-apollo": "^2.1.8",
+    "react-apollo": "^2.1.9",
     "react-dom": "^16.4.1",
     "styled-components": "^3.3.3"
   },
@@ -30,7 +30,7 @@
     "@types/react-dom": "^16.0.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.2.0",
-    "jest": "^23.2.0",
-    "react-testing-library": "^4.1.1"
+    "jest": "^23.3.0",
+    "react-testing-library": "^4.1.2"
   }
 }

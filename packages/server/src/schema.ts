@@ -61,6 +61,8 @@ const typeDefs = gql`
     getUserByUsername(username: String!): User
     getRepositories(first: Int = 10, offset: Int = 0): [Repository!]
     getRepositoryBySlug(slug: String!, ownerUsername: String!): Repository
+    getNewsItems(first: Int = 10, offset: Int = 0): [NewsItem!]
+    getNewsItemBySlug(slug: String!): NewsItem
   }
 `;
 

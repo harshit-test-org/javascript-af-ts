@@ -5,7 +5,9 @@ const typeDefs = {
   Query: {
     getUserByUsername: requireAuth.createResolver(neo4jgraphql),
     getRepositories: neo4jgraphql,
-    getRepositoryBySlug: neo4jgraphql
+    getRepositoryBySlug: neo4jgraphql,
+    getNewsItems: neo4jgraphql,
+    getNewsItemBySlug: neo4jgraphql
   }
 };
 
