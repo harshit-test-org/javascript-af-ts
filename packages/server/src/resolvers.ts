@@ -7,7 +7,9 @@ const typeDefs = {
     getRepositories: neo4jgraphql,
     getRepositoryBySlug: neo4jgraphql,
     getNewsItems: neo4jgraphql,
-    getNewsItemBySlug: neo4jgraphql
+    getNewsItemBySlug: neo4jgraphql,
+    getTalks: neo4jgraphql,
+    getTalkBySlug: neo4jgraphql
   }
 };
 

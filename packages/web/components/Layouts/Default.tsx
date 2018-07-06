@@ -19,9 +19,11 @@ const LayoutContainer = styled.div`
 
 const ContentContainer = styled.div`
   margin-top: 56px;
+  margin-left: 94px;
   transition: 0.2s all ease;
   width: calc(100% - 94px);
   &.jsui-content-expanded {
+    margin-left: 248px;
     width: calc(100% - 248px);
   }
 `;
@@ -30,6 +32,8 @@ const DrawerWithExpansion = styled(Drawer)`
   transition: all 0.4s ease-in-out;
   padding: 0;
   width: 248px;
+  position: fixed;
+  left: 0;
   .logo {
     padding-left: 1.275rem;
     padding-top: 0.7rem;
@@ -95,7 +99,7 @@ const AppbarWithExapansion = styled(Appbar)`
   transition: all 0.4s ease-in-out;
   width: calc(100% - 94px);
   margin-left: 94px;
-  position: absolute;
+  position: fixed;
   top: 0;
   @media all and (max-width: 480px) {
     margin-left: 0;

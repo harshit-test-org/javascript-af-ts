@@ -44,6 +44,7 @@ const typeDefs = gql`
   type Talk {
     id: ID!
     title: String!
+    slug: String!
     iframe: String!
     speaker: String
     previewImage: String!
@@ -63,6 +64,8 @@ const typeDefs = gql`
     getRepositoryBySlug(slug: String!, ownerUsername: String!): Repository
     getNewsItems(first: Int = 10, offset: Int = 0): [NewsItem!]
     getNewsItemBySlug(slug: String!): NewsItem
+    getTalks(first: Int = 10, offset: Int = 0): [Talk!]
+    getTalkBySlug(slug: String!): Talk
   }
 `;
 
