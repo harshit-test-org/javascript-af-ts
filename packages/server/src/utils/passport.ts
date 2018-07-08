@@ -15,10 +15,11 @@ const init = () => {
     const db = driver.session();
     db.run(`MATCH (n:User { id:{id}}) RETURN n`, { id })
       .then(user => {
-        // tslint:disable-next-line no-console
-        done(null, user.records[0].get("n").properties);
-        db.close();
-        return null;
+        if (!_.isEmpty(user.records)) {
+          return done(null, user.records[0].get("n").properties);
+          db.close();
+        }
+        return done(null, null);
       })
       .catch(err => {
         done(err);
@@ -48,9 +49,16 @@ const init = () => {
         const fallbackUsername = splitProfileUrl[splitProfileUrl.length - 1];
         const githubUsername =
           profile.username || profile._json.login || fallbackUsername;
+        const email =
+          (profile.emails &&
+            profile.emails.length > 0 &&
+            profile.emails[0].value) ||
+          null;
+
         const user = {
           id: uuid(),
           name,
+          email,
           username: githubUsername,
           githubToken: token,
           profileUrl: profile.profileUrl
@@ -67,7 +75,7 @@ const init = () => {
           }
           const result = await db.run(
             `
-        CREATE (user:User {id: {id}, name: {name}, username:{username}, githubToken: {githubToken}, profileUrl:{profileUrl}, createdAt: datetime(), updatedAt: datetime() })
+        CREATE (user:User {id: {id}, name: {name}, username:{username}, githubToken: {githubToken}, profileUrl:{profileUrl}, email: {email}, createdAt: datetime(), updatedAt: datetime() })
         RETURN user;
         `,
             user

@@ -2,6 +2,8 @@
 
 Javascript af is a platform for developers to share their great work.
 
+[![Waffle.io - Issues in progress](https://badge.waffle.io/javascript-af/javascript-af-ts.png?label=in%20progress&title=In%20Progress)](http://waffle.io/javascript-af/javascript-af-ts)
+
 ## Team
 
 [Jesse R Weigel](https://github.com/JesseRWeigel) (Founder / Project Manager),

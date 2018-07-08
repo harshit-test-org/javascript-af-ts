@@ -23,7 +23,10 @@ const schema = makeExecutableSchema({
 app.use(
   session({
     secret: process.env.COOKIE_SIGNING_SECRET,
-    cookie: { secure: process.env.NODE_ENV === "production" },
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 2592000000
+    },
     name: "ssid",
     resave: false,
     saveUninitialized: true,
@@ -60,8 +63,8 @@ app.get(
 app.get(
   "/auth/github/callback",
   passport.authenticate("github", {
-    successRedirect: "https://localhost:3000",
-    failureRedirect: "https://localhost:3000"
+    successRedirect: "http://localhost:3000",
+    failureRedirect: "http://localhost:3000"
   })
 );
 

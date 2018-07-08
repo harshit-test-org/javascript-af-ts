@@ -66,6 +66,7 @@ const typeDefs = gql`
     getNewsItemBySlug(slug: String!): NewsItem
     getTalks(first: Int = 10, offset: Int = 0): [Talk!]
     getTalkBySlug(slug: String!): Talk
+    getCurrentUserInfo(id: ID = null): User
   }
 `;
 
