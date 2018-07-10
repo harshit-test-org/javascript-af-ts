@@ -5,6 +5,11 @@ import withApolloClient from "../apollo/with-apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { baseTheme } from "javascript-af-ui";
 
+// Including fonts here
+import 'typeface-fira-sans'
+import 'typeface-fira-mono'
+import 'normalize.css'
+
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
