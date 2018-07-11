@@ -101,6 +101,8 @@ const AppbarWithExapansion = styled(Appbar)`
   margin-left: 94px;
   position: fixed;
   top: 0;
+  background: #ffffff;
+  z-index: 1000;
   @media all and (max-width: 480px) {
     margin-left: 0;
     width: 100%;
