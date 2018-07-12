@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --transpileOnly --respawn src/server.ts",
     "build": "rimraf dist && tsc",
+    "start": "node dist/server.js",
     "test": "jest"
   },
   "dependencies": {
