@@ -10,3 +10,4 @@ temp/
 dump.rdb
 dist
 coverage/
+cypress/starter-files/

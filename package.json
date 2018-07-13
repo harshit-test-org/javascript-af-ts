@@ -17,14 +17,24 @@
   "private": true,
   "scripts": {
     "dev": "npm-run-all -p --print-label ui:dev api:dev",
+    "start": "npm-run-all -p --print-label ui:start api:start",
     "ui:dev": "cd packages/web && yarn run dev",
     "api:dev": "cd packages/server && yarn run dev",
-    "cm": "commit"
+    "ui:start": "cd packages/web && yarn run start",
+    "api:start": "cd packages/server && yarn run start",
+    "cm": "commit",
+    "e2e": "yarn run cy:open",
+    "e2e-dev": "npm-run-all --parallel dev cy:open",
+    "e2e:ci-start": "npm-run-all --parallel --race start cy:run",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
     "@commitlint/prompt-cli": "^7.0.0",
+    "cypress": "^3.0.2",
+    "cypress-testing-library": "^2.2.0",
     "husky": "^1.0.0-rc.13",
     "lerna": "^2.11.0",
     "npm-run-all": "^4.1.3",
