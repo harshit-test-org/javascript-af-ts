@@ -24,6 +24,7 @@ const typeDefs = gql`
     githubUrl: String!
     githubName: String!
     githubOwner: String!
+    isFeatured: Boolean
     description: String
     owner: User @relation(name: "OWNER", direction: "IN")
     stars(first: Int = 10, offset: Int = 0): [Star]
@@ -38,6 +39,7 @@ const typeDefs = gql`
     content: String!
     writer: User @relation(name: "WRITER", direction: "IN")
     previewImage: String
+    isFeatured: Boolean
     createdAt: String!
   }
 
@@ -48,6 +50,7 @@ const typeDefs = gql`
     iframe: String!
     speaker: String
     previewImage: String!
+    isFeatured: Boolean
     createdAt: String!
   }
 
@@ -66,7 +69,22 @@ const typeDefs = gql`
     getNewsItemBySlug(slug: String!): NewsItem
     getTalks(first: Int = 10, offset: Int = 0): [Talk!]
     getTalkBySlug(slug: String!): Talk
-    getCurrentUserInfo(id: ID = null): User
+    getUserInfo(id: ID = null): User
+    getFeaturedRepositories(
+      isFeatured: Boolean = true
+      first: Int = 10
+      offset: Int = 0
+    ): [Repository!]
+    getFeaturedTalks(
+      isFeatured: Boolean = true
+      first: Int = 10
+      offset: Int = 0
+    ): [Talk!]
+    getFeaturedNewsItems(
+      isFeatured: Boolean = true
+      first: Int = 4
+      offset: Int = 0
+    ): [NewsItem!]
   }
 `;
 

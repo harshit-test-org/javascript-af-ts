@@ -32,12 +32,7 @@ const Index: React.SFC<{}> = () => {
         areas={["hero hero tile1", "hero hero tile2", "hero hero tile3"]}
       >
         <Cell area={"hero"}>
-          <HeroSection
-            bgColor={shuffled[0]}
-            image={
-              "https://hptechblogs.com/content/images/2017/12/linkstate.png"
-            }
-          >
+          <HeroSection bgColor={shuffled[0]}>
             {/* Lets use typography now*/}
             Zeit released v2 of hyper terminal
           </HeroSection>
