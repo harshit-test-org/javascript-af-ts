@@ -199,7 +199,13 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           </Typography>
           <div className="right">
             {/* TODO replace this with a link */}
-            <Button>Login</Button>
+            <Button
+              onClick={() =>
+                window.location.replace("http://localhost:8080/auth/github")
+              }
+            >
+              Login
+            </Button>
           </div>
         </AppbarWithExapansion>
         <ContentContainer

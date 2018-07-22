@@ -4,27 +4,6 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: RepositoryQuery
-// ====================================================
-
-export interface RepositoryQuery_getRepositories {
-  id: string;
-  githubName: string;
-  githubOwner: string;
-  slug: string;
-  description: string | null;
-  createdAt: string;
-}
-
-export interface RepositoryQuery {
-  getRepositories: RepositoryQuery_getRepositories[] | null;
-}
-
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL query operation: NewsItemQuery
 // ====================================================
 
@@ -51,6 +30,27 @@ export interface NewsItemQuery {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: RepositoryQuery
+// ====================================================
+
+export interface RepositoryQuery_getRepositories {
+  id: string;
+  githubName: string;
+  githubOwner: string;
+  slug: string;
+  description: string | null;
+  createdAt: string;
+}
+
+export interface RepositoryQuery {
+  getRepositories: RepositoryQuery_getRepositories[] | null;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: TalksQuery
 // ====================================================
 
@@ -66,6 +66,26 @@ export interface TalksQuery_getTalks {
 
 export interface TalksQuery {
   getTalks: TalksQuery_getTalks[] | null;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: meQuery
+// ====================================================
+
+export interface meQuery_getUserInfo {
+  name: string;
+  username: string;
+  email: string;
+  githubToken: string;
+  updatedAt: string | null;
+}
+
+export interface meQuery {
+  getUserInfo: meQuery_getUserInfo | null;
 }
 
 /* tslint:disable */

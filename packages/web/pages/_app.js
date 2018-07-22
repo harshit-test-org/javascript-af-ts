@@ -2,13 +2,14 @@ import App, { Container } from "next/app";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import withApolloClient from "../apollo/with-apollo-client";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider, compose } from "react-apollo";
 import { baseTheme } from "javascript-af-ui";
+import { withAuth } from "@jsaf/controller";
 
 // Including fonts here
-import 'typeface-fira-sans'
-import 'typeface-fira-mono'
-import 'normalize.css'
+import "typeface-fira-sans";
+import "typeface-fira-mono";
+import "normalize.css";
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -24,15 +25,17 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, apolloClient } = this.props;
     return (
-      <Container>
         <ApolloProvider client={apolloClient}>
-          <ThemeProvider theme={baseTheme}>
-            <Component {...pageProps} />
-          </ThemeProvider>
+          <Container>
+              <ThemeProvider theme={baseTheme}>
+                <Component {...pageProps} />
+              </ThemeProvider>
+          </Container>
         </ApolloProvider>
-      </Container>
     );
   }
 }
 
-export default withApolloClient(MyApp);
+export default compose(
+  withApolloClient,
+)(MyApp);

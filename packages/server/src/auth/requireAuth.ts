@@ -1,5 +1,5 @@
 import createResolver from "../utils/createResolver";
-import { AuthenticationError } from "apollo-server";
+import { AuthenticationError } from "apollo-server-express";
 
 const requireAuth: {
   createResolver?: (

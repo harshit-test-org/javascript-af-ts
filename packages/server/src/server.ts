@@ -1,4 +1,4 @@
-import { ApolloServer, makeExecutableSchema } from "apollo-server";
+import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
 import { v1 as neo4j } from "neo4j-driver";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
@@ -9,6 +9,7 @@ import * as Redis from "ioredis";
 import * as passport from "passport";
 import * as express from "express";
 import * as session from "express-session";
+import * as cors from "cors";
 
 dotenv.config({ path: `${__dirname}/../.env` });
 
@@ -23,18 +24,27 @@ const schema = makeExecutableSchema({
 app.use(
   session({
     secret: process.env.COOKIE_SIGNING_SECRET,
-    cookie: {
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 2592000000
-    },
-    name: "ssid",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 15552000000
+    }, // 6 months
     store: new RedisStore({
       client: redisClient as any
     })
   })
 );
+
+const corsMW = {
+  origin: "http://localhost:3000",
+  credentials: true
+};
+
+app.use(cors(corsMW));
+app.options("*", cors(corsMW));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -76,7 +86,7 @@ export const driver = neo4j.driver(
   )
 );
 
-server.applyMiddleware({ app, path: "/graphql" });
+server.applyMiddleware({ app, cors: corsMW, path: "/graphql" });
 
 app.listen(8080, () => {
   // tslint:disable-next-line

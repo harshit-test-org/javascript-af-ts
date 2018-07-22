@@ -14,7 +14,8 @@ import Layout from "../components/Layouts";
 import {
   RepositoryController,
   NewsItemController,
-  TalksController
+  TalksController,
+  withAuth
 } from "@jsaf/controller";
 import { HeroSection } from "../components/HeroSection";
 import shuffle from "lodash.shuffle";
@@ -149,4 +150,4 @@ const Index: React.SFC<{}> = () => {
   );
 };
 
-export default Index;
+export default withAuth(Index);

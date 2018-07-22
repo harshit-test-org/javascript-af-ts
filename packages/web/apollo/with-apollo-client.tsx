@@ -1,13 +1,16 @@
-import * as React from "react";
+import React from "react";
 import initApollo from "./init-apollo";
 import Head from "next/head";
 import { getDataFromTree } from "react-apollo";
-import { ApolloClient } from "apollo-boost";
+
+interface Process {
+  browser: boolean;
+}
+declare const process: Process;
 
 export default App => {
   return class Apollo extends React.Component {
     static displayName = "withApollo(App)";
-    apolloClient: ApolloClient<{}>;
     static async getInitialProps(ctx) {
       const { Component, router } = ctx;
 
@@ -17,10 +20,11 @@ export default App => {
       }
 
       const apolloState: { data?: any } = {};
-
+      const apollo = !process.browser
+        ? initApollo(null, ctx.ctx.req.headers.cookie)
+        : initApollo();
       // Run all GraphQL queries in the component tree
       // and extract the resulting data
-      const apollo = initApollo();
       try {
         // Run all GraphQL queries
         await getDataFromTree(
@@ -36,11 +40,10 @@ export default App => {
         // Prevent Apollo Client GraphQL errors from crashing SSR.
         // Handle them in components via the data.error prop:
         // http://dev.apollodata.com/react/api-queries.html#graphql-query-data-error
-        // tslint:disable-next-line
-        console.error("Error while running `getDataFromTree`", error);
+        // tslint:disable-next-line:no-console
+        console.error("Error while running `getDataFromTree`dd", error);
       }
 
-      // @ts-ignore
       if (!process.browser) {
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
@@ -55,7 +58,7 @@ export default App => {
         apolloState
       };
     }
-
+    apolloClient: any;
     constructor(props) {
       super(props);
       // `getDataFromTree` renders the component first, the client is passed off as a property.
