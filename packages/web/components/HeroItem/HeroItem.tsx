@@ -10,31 +10,30 @@ interface Props {
 
 const HeroCard = styled.div`
   display: grid;
+  align-items: center;
   background: black;
-  height: 100%;
-  position: relative;
   background-image: url("${(props: Props) => props.image}");
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  box-shadow: 4px 0 4px  rgba(0,0,0,0.1);
   &:before {
     content: "";
     position: absolute;
     top: 0;
-    right: 0;
     left: 0;
     height: 100%;
     width: 100%;
     background: ${(props: Props) => props.bgColor};
     opacity: 0.75;
   }
-  h3,
-  h4 {  
-    z-index: 5;
-    margin-left: 10px;
+  h3, h4 {
+    margin: 2vw;
+    z-index: 1;
   }
 `;
 
-export class HeroSection extends React.Component<Props, {}> {
+export class HeroItem extends React.Component<Props, {}> {
   render() {
     const { bgColor, image, heading = "h3", children } = this.props;
     return (

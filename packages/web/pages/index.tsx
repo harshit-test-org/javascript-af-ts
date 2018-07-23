@@ -6,9 +6,7 @@ import {
   Card,
   CardHeader,
   CardContent,
-  CardActions,
-  Grid,
-  Cell
+  CardActions
 } from "javascript-af-ui";
 import Layout from "../components/Layouts";
 import {
@@ -16,52 +14,65 @@ import {
   NewsItemController,
   TalksController,
   withAuth
-} from "@jsaf/controller";
-import { HeroSection } from "../components/HeroSection";
+} from "../../controller/dist";
+import { HeroItem } from "../components/HeroItem";
 import shuffle from "lodash.shuffle";
 import { HERO_COLORS } from "../constants";
+import styled from "styled-components";
 
 const shuffled = shuffle(HERO_COLORS);
+
+const HeroTop = styled.section`
+  display: grid;
+  grid-gap: 1vw;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(3, minmax(15vh, 1fr));
+  grid-template-areas: "featured item1" "featured item2" "featured item3";
+  & > :nth-child(1) {
+    grid-area: featured;
+    align-content: end;
+  }
+  & > :nth-child(2) {
+    grid-area: item1;
+  }
+  & > :nth-child(3) {
+    grid-area: item2;
+  }
+  & > :nth-child(4) {
+    grid-area: item3;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr repeat(3, minmax(15vh, 1fr));
+    grid-template-areas: "featured" "item2" "item3" "item1";
+  }
+`;
 
 const Index: React.SFC<{}> = () => {
   return (
     <Layout>
-      <Grid
-        columns={3}
-        gap="10px"
-        rows={3}
-        areas={["hero hero tile1", "hero hero tile2", "hero hero tile3"]}
-      >
-        <Cell area={"hero"}>
-          <HeroSection bgColor={shuffled[0]}>
-            {/* Lets use typography now*/}
-            Zeit released v2 of hyper terminal
-          </HeroSection>
-        </Cell>
-        <Cell area={"tile1"}>
-          <HeroSection
-            heading="h4"
-            bgColor={shuffled[1]}
-            image="https://hptechblogs.com/content/images/2017/08/f590050bbc2c4fe4d26e7d02dfa48666.jpg"
-          >
-            Nextjs hit v6.1.1
-          </HeroSection>
-        </Cell>
-        <Cell area={"tile2"}>
-          <HeroSection bgColor={shuffled[2]} heading="h4">
-            Apollo teased the defer features incoming
-          </HeroSection>
-        </Cell>
-        <Cell area={"tile3"}>
-          <HeroSection
-            bgColor={shuffled[3]}
-            heading="h4"
-            image="https://hptechblogs.com/content/images/2017/08/jwt_react.png"
-          >
-            Andrew Clark gave demo with {"'"}Suspense{"'"}
-          </HeroSection>
-        </Cell>
-      </Grid>
+      <HeroTop>
+        <HeroItem bgColor={shuffled[0]}>
+          Zeit released v2 of hyper terminal
+        </HeroItem>
+        <HeroItem
+          heading="h4"
+          bgColor={shuffled[1]}
+          image="https://hptechblogs.com/content/images/2017/08/f590050bbc2c4fe4d26e7d02dfa48666.jpg"
+        >
+          Nextjs hit v6.1.1
+        </HeroItem>
+        <HeroItem bgColor={shuffled[2]} heading="h4">
+          Apollo teased the defer features incoming
+        </HeroItem>
+        <HeroItem
+          bgColor={shuffled[3]}
+          heading="h4"
+          image="https://hptechblogs.com/content/images/2017/08/jwt_react.png"
+        >
+          Andrew Clark gave demo with {"'"}Suspense{"'"}
+        </HeroItem>
+      </HeroTop>
       <RepositoryController>
         {({ data, loading }) => {
           if (loading) {
