@@ -10,9 +10,12 @@ const typeDefs = {
     getNewsItemBySlug: neo4jgraphql,
     getTalks: neo4jgraphql,
     getTalkBySlug: neo4jgraphql,
-    getUserInfo: requireAuth.createResolver((_, __, ctx, info) =>
-      neo4jgraphql(_, { id: ctx.user.id }, ctx, info)
-    ),
+    getUserInfo: (_, __, ctx, info) => {
+      if (!ctx.user || !ctx.user.id) {
+        return null;
+      }
+      neo4jgraphql(_, { id: ctx.user.id }, ctx, info);
+    },
     getFeaturedRepositories: neo4jgraphql,
     getFeaturedTalks: neo4jgraphql,
     getFeaturedNewsItems: neo4jgraphql

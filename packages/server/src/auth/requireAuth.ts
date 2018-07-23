@@ -12,7 +12,7 @@ const requireAuth: {
   ) => any;
 } = createResolver((_, __, ctx) => {
   if (!ctx.user || !ctx.user.id) {
-    throw new AuthenticationError("Not authenticated");
+    throw new AuthenticationError("Not Authenticated");
   }
 });
 
