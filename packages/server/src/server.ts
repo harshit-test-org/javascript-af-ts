@@ -26,6 +26,7 @@ app.use(
     secret: process.env.COOKIE_SIGNING_SECRET,
     resave: false,
     saveUninitialized: false,
+    name: "ssid",
     cookie: {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

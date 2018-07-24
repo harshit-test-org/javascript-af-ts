@@ -48,17 +48,20 @@ const HeroTop = styled.section`
   }
 `;
 
-const Index: React.SFC<{}> = () => {
+const Index: React.SFC = () => {
   return (
     <Layout>
       <HeroTop>
-        <HeroItem bgColor={shuffled[0]}>
+        <HeroItem
+          bgColor={shuffled[0]}
+          image="https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7335ddddbdb2e401ce4f50507524d900&auto=format&fit=crop&w=1050&q=80"
+        >
           Zeit released v2 of hyper terminal
         </HeroItem>
         <HeroItem
           heading="h4"
           bgColor={shuffled[1]}
-          image="https://hptechblogs.com/content/images/2017/08/f590050bbc2c4fe4d26e7d02dfa48666.jpg"
+          image="https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7335ddddbdb2e401ce4f50507524d900&auto=format&fit=crop&w=1050&q=80"
         >
           Nextjs hit v6.1.1
         </HeroItem>
@@ -68,11 +71,14 @@ const Index: React.SFC<{}> = () => {
         <HeroItem
           bgColor={shuffled[3]}
           heading="h4"
-          image="https://hptechblogs.com/content/images/2017/08/jwt_react.png"
+          image="https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7335ddddbdb2e401ce4f50507524d900&auto=format&fit=crop&w=1050&q=80"
         >
           Andrew Clark gave demo with {"'"}Suspense{"'"}
         </HeroItem>
       </HeroTop>
+      <Typography type={"h3"} margin={6}>
+        Repositories
+      </Typography>
       <RepositoryController>
         {({ data, loading }) => {
           if (loading) {

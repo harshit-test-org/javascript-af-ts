@@ -14,7 +14,7 @@ const typeDefs = {
       if (!ctx.user || !ctx.user.id) {
         return null;
       }
-      neo4jgraphql(_, { id: ctx.user.id }, ctx, info);
+      return neo4jgraphql(_, { id: ctx.user.id }, ctx, info);
     },
     getFeaturedRepositories: neo4jgraphql,
     getFeaturedTalks: neo4jgraphql,
