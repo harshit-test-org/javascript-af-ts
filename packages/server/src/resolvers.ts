@@ -10,7 +10,7 @@ const typeDefs = {
     getNewsItemBySlug: neo4jgraphql,
     getTalks: neo4jgraphql,
     getTalkBySlug: neo4jgraphql,
-    getUserInfo: (_, __, ctx, info) => {
+    getUserInfo: (_: any, __: any, ctx: { user?: any }, info: any): any => {
       if (!ctx.user || !ctx.user.id) {
         return null;
       }
