@@ -12,19 +12,21 @@ const init = () => {
   });
 
   passport.deserializeUser((id, done) => {
-    const db = driver.session();
-    db.run(`MATCH (n:User { id:{id}}) RETURN n`, { id })
-      .then(user => {
-        if (!_.isEmpty(user.records)) {
-          return done(null, user.records[0].get("n").properties);
-          db.close();
-        }
-        return done(null, null);
-      })
-      .catch(err => {
-        done(err);
-        return null;
-      });
+    // @todo If we dont end up using user.xx except id dont query db
+    // const db = driver.session();
+    // db.run(`MATCH (n:User { id:{id}}) RETURN n`, { id })
+    //   .then(user => {
+    //     if (!_.isEmpty(user.records)) {
+    //       return done(null, user.records[0].get("n").properties);
+    //       db.close();
+    //     }
+    //     return done(null, null);
+    //   })
+    //   .catch(err => {
+    //     done(err);
+    //     return null;
+    //   });
+    return done(null, { id });
   });
 
   passport.use(

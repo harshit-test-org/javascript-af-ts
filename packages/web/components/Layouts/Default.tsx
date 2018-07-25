@@ -26,6 +26,11 @@ const ContentContainer = styled.div`
     margin-left: 248px;
     width: calc(100% - 248px);
   }
+  @media all and (max-width: 480px) {
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: 94px;
+  }
 `;
 
 const DrawerWithExpansion = styled(Drawer)`
@@ -45,11 +50,12 @@ const DrawerWithExpansion = styled(Drawer)`
     width: 94px;
     @media all and (max-width: 480px) {
       width: 100%;
-      position: absolute;
+      position: fixed;
       bottom: 0;
       height: 65px;
       min-height: auto;
       display: flex;
+      z-index: 100;
     }
   }
 `;
