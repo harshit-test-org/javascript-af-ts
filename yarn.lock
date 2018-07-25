@@ -1188,9 +1188,13 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^10.1.0", "@types/node@^10.5.2":
+"@types/node@*", "@types/node@^10.1.0":
   version "10.5.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.2.tgz#f19f05314d5421fe37e74153254201a7bf00a707"
+
+"@types/node@^10.5.3":
+  version "10.5.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.5.3.tgz#5bcfaf088ad17894232012877669634c06b20cc5"
 
 "@types/oauth@*":
   version "0.9.0"
@@ -1484,9 +1488,9 @@ apollo-cache@^1.1.13:
   dependencies:
     apollo-utilities "^1.0.17"
 
-apollo-client@^2.3.5:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.3.6.tgz#b91999a8c8cc7ad54a1a0d8d0a9c53fc49c390ae"
+apollo-client@^2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.3.7.tgz#891cd2392851f861a62fe334fa76fc629ed19fd3"
   dependencies:
     "@types/zen-observable" "^0.8.0"
     apollo-cache "^1.1.13"
@@ -5684,9 +5688,9 @@ java-properties@^0.2.9:
   version "0.2.10"
   resolved "https://registry.yarnpkg.com/java-properties/-/java-properties-0.2.10.tgz#2551560c25fa1ad94d998218178f233ad9b18f60"
 
-javascript-af-ui@0.0.26:
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/javascript-af-ui/-/javascript-af-ui-0.0.26.tgz#e82fd74312dd4561476c261451045ededd4cae32"
+javascript-af-ui@0.0.27:
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/javascript-af-ui/-/javascript-af-ui-0.0.27.tgz#609a1034fa477f05e26b5b7a7f51ca4d64dc350b"
   dependencies:
     "@atlaskit/blanket" "^6.0.3"
     "@atlaskit/spinner" "^8.0.0"
@@ -7072,9 +7076,9 @@ neo4j-driver@^1.6.1, neo4j-driver@^1.6.2:
     babel-runtime "^6.18.0"
     uri-js "^4.2.1"
 
-neo4j-graphql-js@^0.1.26:
-  version "0.1.28"
-  resolved "https://registry.yarnpkg.com/neo4j-graphql-js/-/neo4j-graphql-js-0.1.28.tgz#4ec8ab8a1c3225a792d63f7b4cfe224bd2876664"
+neo4j-graphql-js@^0.1.29:
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/neo4j-graphql-js/-/neo4j-graphql-js-0.1.29.tgz#4ac748ff894c4255db0ab289bd6f1c875c514ae8"
   dependencies:
     graphql "14.0.0-rc.2"
     lodash "^4.17.10"

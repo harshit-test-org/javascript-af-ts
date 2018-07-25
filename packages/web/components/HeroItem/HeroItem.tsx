@@ -33,15 +33,13 @@ const HeroCard = styled.div`
   }
 `;
 
-export class HeroItem extends React.Component<Props, {}> {
-  render() {
-    const { bgColor, image, heading = "h3", children } = this.props;
-    return (
-      <HeroCard bgColor={bgColor} image={image}>
-        <Typography type={heading as any} color="#fff">
-          {children}
-        </Typography>
-      </HeroCard>
-    );
-  }
-}
+export const HeroItem: React.SFC<Props> = props => {
+  const { bgColor, image, heading = "h3", children } = props;
+  return (
+    <HeroCard bgColor={bgColor} image={image}>
+      <Typography type={heading as any} color="#fff">
+        {children}
+      </Typography>
+    </HeroCard>
+  );
+};

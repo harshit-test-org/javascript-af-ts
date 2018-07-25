@@ -19,6 +19,7 @@ import { HeroItem } from "../components/HeroItem";
 import shuffle from "lodash.shuffle";
 import { HERO_COLORS } from "../constants";
 import styled from "styled-components";
+import { NewsItem } from "../components/NewsItem";
 
 const shuffled = shuffle(HERO_COLORS);
 
@@ -107,34 +108,31 @@ const Index: React.SFC = () => {
           );
         }}
       </RepositoryController>
+      <Typography type={"h3"} margin={10}>
+        Latest Dev News
+      </Typography>
       <NewsItemController>
         {({ data, loading }) => {
           if (loading) {
             return <h1>loading</h1>;
           }
           return (
-            <CardHorizontalScroller style={{ width: "calc(100% - 32px)" }}>
+            <div style={{ margin: "0 12px" }}>
               {data.map(item => (
-                <Card
-                  key={item.id}
-                  elevation={2}
-                  style={{
-                    maxWidth: "300px"
-                  }}
-                >
-                  <CardHeader title={item.title} />
-                  <CardContent>
-                    <Typography>{item.slug}</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button>View</Button>
-                  </CardActions>
-                </Card>
+                <NewsItem key={item.id} title={item.title}>
+                  {item.content
+                    .split(" ")
+                    .slice(0, 30)
+                    .join(" ")}
+                </NewsItem>
               ))}
-            </CardHorizontalScroller>
+            </div>
           );
         }}
       </NewsItemController>
+      <Typography type={"h3"} margin={10}>
+        Popular Talks
+      </Typography>
       <TalksController>
         {({ data, loading }) => {
           if (loading) {
