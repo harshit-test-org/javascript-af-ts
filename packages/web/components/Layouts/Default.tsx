@@ -9,6 +9,7 @@ import TrendingIcon from "../../icons/TrendingIcon";
 import NewsIcon from "../../icons/NewsIcon";
 import DrawerOpenIcon from "../../icons/DrawerOpenIcon";
 import DrawerCloseIcon from "../../icons/DrawerCloseIcon";
+// import { AuthConsumer } from "../../../controller/dist";
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -200,18 +201,36 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           >
             {this.state.collapsed ? <DrawerOpenIcon /> : <DrawerCloseIcon />}
           </button>
+
           <Typography type="h4" margin={0}>
             Home
           </Typography>
           <div className="right">
             {/* TODO replace this with a link */}
-            <Button
-              onClick={() =>
-                window.location.replace("http://localhost:8080/auth/github")
-              }
-            >
-              Login
-            </Button>
+            {/* Uncomment when next js PR 4639 is released */}
+            {/* <AuthConsumer>
+              {({ user }) => {
+                return (
+                  <>
+                    {user ? (
+                      <Typography type="h4" margin={0}>
+                        {user.name}
+                      </Typography>
+                    ) : (
+                      <Button
+                        onClick={() =>
+                          window.location.replace(
+                            "http://localhost:8080/auth/github"
+                          )
+                        }
+                      >
+                        Login
+                      </Button>
+                    )}
+                  </>
+                );
+              }}
+            </AuthConsumer> */}
           </div>
         </AppbarWithExapansion>
         <ContentContainer

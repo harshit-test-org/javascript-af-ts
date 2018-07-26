@@ -49,6 +49,27 @@ const HeroTop = styled.section`
   }
 `;
 
+const ContentSection = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: "content ads";
+  .content {
+    grid-area: content;
+    margin-left: 0.5rem;
+  }
+  .ads {
+    grid-area: ads;
+  }
+`;
+
+const ContentContainer = styled.div`
+  border-bottom: 1px solid #eeeeee;
+  padding: 2rem 0;
+  & > h3 {
+    font-size: 1.75rem !important;
+  }
+`;
+
 const Index: React.SFC = () => {
   return (
     <Layout>
@@ -77,90 +98,100 @@ const Index: React.SFC = () => {
           Andrew Clark gave demo with {"'"}Suspense{"'"}
         </HeroItem>
       </HeroTop>
-      <Typography type={"h3"} margin={6}>
-        Repositories
-      </Typography>
-      <RepositoryController>
-        {({ data, loading }) => {
-          if (loading) {
-            return <h1>loading</h1>;
-          }
-          return (
-            <CardHorizontalScroller style={{ width: "calc(100% - 32px)" }}>
-              {data.map(item => (
-                <Card
-                  key={item.id}
-                  elevation={2}
-                  style={{
-                    maxWidth: "300px"
-                  }}
-                >
-                  <CardHeader title={item.githubName} />
-                  <CardContent>
-                    <Typography>{item.description}</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button>View</Button>
-                  </CardActions>
-                </Card>
-              ))}
-            </CardHorizontalScroller>
-          );
-        }}
-      </RepositoryController>
-      <Typography type={"h3"} margin={10}>
-        Latest Dev News
-      </Typography>
-      <NewsItemController>
-        {({ data, loading }) => {
-          if (loading) {
-            return <h1>loading</h1>;
-          }
-          return (
-            <div style={{ margin: "0 12px" }}>
-              {data.map(item => (
-                <NewsItem key={item.id} title={item.title}>
-                  {item.content
-                    .split(" ")
-                    .slice(0, 30)
-                    .join(" ")}
-                </NewsItem>
-              ))}
-            </div>
-          );
-        }}
-      </NewsItemController>
-      <Typography type={"h3"} margin={10}>
-        Popular Talks
-      </Typography>
-      <TalksController>
-        {({ data, loading }) => {
-          if (loading) {
-            return <h1>loading</h1>;
-          }
-          return (
-            <CardHorizontalScroller style={{ width: "calc(100% - 32px)" }}>
-              {data.map(item => (
-                <Card
-                  key={item.id}
-                  elevation={2}
-                  style={{
-                    maxWidth: "300px"
-                  }}
-                >
-                  <CardHeader title={item.title} />
-                  <CardContent>
-                    <Typography>{item.slug}</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button>View</Button>
-                  </CardActions>
-                </Card>
-              ))}
-            </CardHorizontalScroller>
-          );
-        }}
-      </TalksController>
+      <ContentSection>
+        <div className="content">
+          <ContentContainer>
+            <Typography type={"h3"} margin={6}>
+              Repositories
+            </Typography>
+            <RepositoryController>
+              {({ data, loading }) => {
+                if (loading) {
+                  return <h1>loading</h1>;
+                }
+                return (
+                  <CardHorizontalScroller>
+                    {data.map(item => (
+                      <Card
+                        key={item.id}
+                        elevation={2}
+                        style={{
+                          maxWidth: "300px"
+                        }}
+                      >
+                        <CardHeader title={item.githubName} />
+                        <CardContent>
+                          <Typography>{item.description}</Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Button>View</Button>
+                        </CardActions>
+                      </Card>
+                    ))}
+                  </CardHorizontalScroller>
+                );
+              }}
+            </RepositoryController>
+          </ContentContainer>
+          <ContentContainer>
+            <Typography type={"h3"} margin={10}>
+              Latest Dev News
+            </Typography>
+            <NewsItemController>
+              {({ data, loading }) => {
+                if (loading) {
+                  return <h1>loading</h1>;
+                }
+                return (
+                  <div style={{ margin: "0 12px" }}>
+                    {data.map(item => (
+                      <NewsItem key={item.id} title={item.title}>
+                        {item.content
+                          .split(" ")
+                          .slice(0, 30)
+                          .join(" ")}
+                      </NewsItem>
+                    ))}
+                  </div>
+                );
+              }}
+            </NewsItemController>
+          </ContentContainer>
+          <ContentContainer>
+            <Typography type={"h3"} margin={10}>
+              Popular Talks
+            </Typography>
+            <TalksController>
+              {({ data, loading }) => {
+                if (loading) {
+                  return <h1>loading</h1>;
+                }
+                return (
+                  <CardHorizontalScroller>
+                    {data.map(item => (
+                      <Card
+                        key={item.id}
+                        elevation={2}
+                        style={{
+                          maxWidth: "300px"
+                        }}
+                      >
+                        <CardHeader title={item.title} />
+                        <CardContent>
+                          <Typography>{item.slug}</Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Button>View</Button>
+                        </CardActions>
+                      </Card>
+                    ))}
+                  </CardHorizontalScroller>
+                );
+              }}
+            </TalksController>
+          </ContentContainer>
+        </div>
+      </ContentSection>
     </Layout>
   );
 };

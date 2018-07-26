@@ -3,9 +3,10 @@ import { graphql, ChildProps } from "react-apollo";
 import gql from "graphql-tag";
 import { meQuery } from "../../types";
 
-const { Provider: AuthProvider, Consumer: AuthConsumer } = React.createContext(
-  null
-);
+const { Provider: AuthProvider, Consumer: AuthConsumer } = React.createContext({
+  user: null,
+  error: null
+});
 
 export { AuthConsumer, AuthProvider };
 
@@ -39,7 +40,7 @@ const withAuth = (AuthComposed: React.ComponentType<{ user?: any }>) => {
         );
       }
       return (
-        <AuthProvider value={{ user }}>
+        <AuthProvider value={{ user, error: null }}>
           <AuthComposed {...rest} user={user} />
         </AuthProvider>
       );

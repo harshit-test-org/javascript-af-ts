@@ -2,7 +2,7 @@ import App, { Container } from "next/app";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import withApolloClient from "../apollo/with-apollo-client";
-import { ApolloProvider, compose } from "react-apollo";
+import { ApolloProvider } from "react-apollo";
 import { baseTheme } from "javascript-af-ui";
 import { withAuth } from "@jsaf/controller";
 
@@ -36,6 +36,4 @@ class MyApp extends App {
   }
 }
 
-export default compose(
-  withApolloClient,
-)(MyApp);
+export default withApolloClient(MyApp);
