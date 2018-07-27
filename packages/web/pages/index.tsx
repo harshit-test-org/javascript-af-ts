@@ -51,7 +51,9 @@ const HeroTop = styled.section`
 
 const ContentSection = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  height: 100%;
+  grid-template-columns: 1.7fr 0.3fr;
+  grid-template-rows: ;
   grid-template-areas: "content ads";
   .content {
     grid-area: content;

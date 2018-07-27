@@ -4,15 +4,14 @@ import { ThemeProvider } from "styled-components";
 import withApolloClient from "../apollo/with-apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { baseTheme } from "javascript-af-ui";
-import { withAuth } from "@jsaf/controller";
 
 // Including fonts here
 import "typeface-fira-sans";
 import "typeface-fira-mono";
 import "normalize.css";
 
-class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+class MyApp extends App<{ apolloClient?: any }> {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -25,13 +24,13 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, apolloClient } = this.props;
     return (
-        <ApolloProvider client={apolloClient}>
-          <Container>
-              <ThemeProvider theme={baseTheme}>
-                <Component {...pageProps} />
-              </ThemeProvider>
-          </Container>
-        </ApolloProvider>
+      <ApolloProvider client={apolloClient}>
+        <Container>
+          <ThemeProvider theme={baseTheme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </Container>
+      </ApolloProvider>
     );
   }
 }
