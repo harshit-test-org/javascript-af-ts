@@ -9,6 +9,14 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
+  server.get("/r/:user/:repo", (req, res) => {
+    return app.render(req, res, "/repository", {
+      user: req.params.user,
+      repo: req.params.repo,
+      ...req.query
+    });
+  });
+
   server.get("*", (req, res) => {
     return handle(req, res);
   });
