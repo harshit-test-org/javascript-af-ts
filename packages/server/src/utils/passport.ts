@@ -57,14 +57,6 @@ const init = () => {
             profile.emails[0].value) ||
           null;
 
-        const user = {
-          id: uuid(),
-          name,
-          email,
-          username: githubUsername,
-          githubToken: token,
-          profileUrl: profile.profileUrl
-        };
         const db = driver.session();
         try {
           const res = await db.run(
@@ -72,9 +64,24 @@ const init = () => {
             { username: githubUsername }
           );
           if (!_.isEmpty(res.records)) {
+            // save thier new git token
+            await db.run(
+              `MATCH (n:User {username: {username}})
+                          SET n.githubToken = {githubToken}
+                          RETURN n`,
+              { username: githubUsername, githubToken: token }
+            );
             // Existing user just create their session
             return done(null, res.records[0].get("user").properties);
           }
+          const user = {
+            id: uuid(),
+            name,
+            email,
+            username: githubUsername,
+            githubToken: token,
+            profileUrl: profile.profileUrl
+          };
           const result = await db.run(
             `
         CREATE (user:User {id: {id}, name: {name}, username:{username}, githubToken: {githubToken}, profileUrl:{profileUrl}, email: {email}, createdAt: datetime(), updatedAt: datetime() })
