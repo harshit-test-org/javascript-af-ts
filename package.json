@@ -7,7 +7,9 @@
     ],
     "nohoist": [
       "**/neo4j-graphql-js",
-      "**/neo4j-graphql-js/**"
+      "**/neo4j-graphql-js/**",
+      "**/next",
+      "**/next/**"
     ]
   },
   "description": "Javascript AF monorepo",
@@ -42,6 +44,10 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.14.0",
     "tslint-react": "^3.6.0"
+  },
+  "resolutions":{
+    "webpack": "4.16.3",
+    "next":"6.1.1-canary.4"
   },
   "husky": {
     "hooks": {
