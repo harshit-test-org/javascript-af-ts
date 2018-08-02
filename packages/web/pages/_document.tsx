@@ -17,7 +17,6 @@ export default class MyDocument extends Document {
         <Head>
           <title>Javascript AF</title>
           <meta name="viewport" content="width=device-width,initial-scale=1" />
-          <link rel="stylesheet" href="/_next/static/style.css" />
           {this.props.styleTags}
         </Head>
         <body>

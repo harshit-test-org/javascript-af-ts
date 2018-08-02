@@ -3,4 +3,4 @@ const withFonts = require("next-fonts");
 const withPlugins = require("next-compose-plugins");
 const withCss = require("@zeit/next-css");
 
-module.exports = withPlugins([withFonts, withCss, withTypescript]);
+module.exports = withPlugins([withFonts,  withTypescript, withCss]);

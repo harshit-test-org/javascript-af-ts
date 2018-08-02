@@ -43,7 +43,7 @@
     "rimraf": "^2.6.2",
     "ts-jest": "^23.0.1",
     "ts-node-dev": "^1.0.0-pre.26",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.1"
   },
   "jest": {
     "transform": {

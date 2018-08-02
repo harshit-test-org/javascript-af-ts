@@ -9,7 +9,7 @@ import TrendingIcon from "../../icons/TrendingIcon";
 import NewsIcon from "../../icons/NewsIcon";
 import DrawerOpenIcon from "../../icons/DrawerOpenIcon";
 import DrawerCloseIcon from "../../icons/DrawerCloseIcon";
-// import { AuthConsumer } from "../../../controller/dist";
+import { User } from "@jsaf/controller";
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -208,8 +208,8 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           <div className="right">
             {/* TODO replace this with a link */}
             {/* Uncomment when next js PR 4639 is released */}
-            {/* <AuthConsumer>
-              {({ user }) => {
+            <User>
+              {({ data: { getUserInfo: user } }) => {
                 return (
                   <>
                     {user ? (
@@ -230,7 +230,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
                   </>
                 );
               }}
-            </AuthConsumer> */}
+            </User>
           </div>
         </AppbarWithExapansion>
         <ContentContainer
