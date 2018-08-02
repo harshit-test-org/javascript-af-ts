@@ -8,6 +8,8 @@ import { baseTheme } from "javascript-af-ui";
 // Including fonts here
 import "typeface-fira-sans";
 import "typeface-fira-mono";
+import "typeface-fira-sans-condensed";
+import "typeface-fira-sans-extra-condensed";
 import "normalize.css";
 
 class MyApp extends App<{ apolloClient?: any }> {
