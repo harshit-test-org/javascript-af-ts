@@ -10,10 +10,10 @@ import {
 } from "javascript-af-ui";
 import Layout from "../components/Layouts";
 import {
-  RepositoryController,
+  RepositoriesController,
   NewsItemController,
   TalksController
-} from "../../controller/dist";
+} from "@jsaf/controller";
 import { HeroItem } from "../components/HeroItem";
 import shuffle from "lodash.shuffle";
 import { HERO_COLORS } from "../constants";
@@ -107,7 +107,7 @@ const Index: React.SFC = () => {
             <Typography type={"h3"} margin={6}>
               Repositories
             </Typography>
-            <RepositoryController>
+            <RepositoriesController>
               {({ data, loading }) => {
                 if (loading) {
                   return <h1>loading</h1>;
@@ -134,7 +134,7 @@ const Index: React.SFC = () => {
                   </CardHorizontalScroller>
                 );
               }}
-            </RepositoryController>
+            </RepositoriesController>
           </ContentContainer>
           <ContentContainer>
             <Typography type={"h3"} margin={10}>

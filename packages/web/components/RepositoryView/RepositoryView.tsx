@@ -5,6 +5,7 @@ import { Sparklines, SparklinesCurve } from "react-sparklines";
 import GitHubIcon from "../../icons/GithubIcon";
 import HouseIcon from "../../icons/HouseIcon";
 import "github-markdown-css";
+import { RepositoryController } from "@jsaf/controller";
 
 const CardContentWithGrid = styled(CardContent)`
   display: grid;
@@ -73,7 +74,7 @@ const StatsSectionKeyValuePairStyled = styled.div`
 `;
 const StatsSectionKeyValuePair: React.SFC<{
   name: JSX.Element | string;
-  value: JSX.Element | string;
+  value: JSX.Element | number | string;
   noHalfDisection?: boolean;
 }> = ({ name, value, ...props }) => {
   if (!value) {
@@ -109,113 +110,84 @@ const StatsSticky = styled.div`
 `;
 
 class RepositoryView extends React.Component<{ user: string; repo: string }> {
-  state = {
-    gitData: null,
-    readmeData: "",
-    commitData: []
-  };
-  componentDidMount() {
-    const { user, repo } = this.props;
-    fetch(`https://api.github.com/repos/${user}/${repo}`)
-      .then(response => response.json())
-      .then(res => this.setState({ gitData: res }));
-    fetch(`https://api.github.com/repos/${user}/${repo}/readme`, {
-      headers: {
-        Accept: "application/vnd.github.VERSION.html"
-      }
-    })
-      .then(res => res.text())
-      .then(res => this.setState({ readmeData: res }));
-    fetch(`https://api.github.com/repos/${user}/${repo}/stats/participation`)
-      .then(r => r.json())
-      .then(r => this.setState({ commitData: r.all }));
-  }
-
   render() {
-    const { user, repo } = this.props;
-    const regexp = /(href)="(\.)/gim;
-    const regexp2 = /(src)="(\.)/gim;
-    const parsed1 = this.state.readmeData.replace(
-      regexp,
-      `$1="https://github.com/${user}/${repo}/tree/master`
-    );
-    const parsed = parsed1.replace(
-      regexp2,
-      `$1="https://raw.githubusercontent.com/${user}/${repo}/master`
-    );
     return (
-      <Card elevation={1}>
-        <CardHeader title="MDX" />
-        <CardContentWithGrid>
-          <MdContent>
-            <div
-              className="markdown-body"
-              dangerouslySetInnerHTML={{ __html: parsed }}
-            />
-          </MdContent>
-          <StatsContainer>
-            <StatsSticky>
-              <StatsSection>
-                <Typography type="h4" margin={6}>
-                  Meta
-                </Typography>
-                <StatsSectionKeyValuePair
-                  name="License"
-                  value={
-                    this.state.gitData && this.state.gitData.license.spdx_id
-                  }
-                />
-                <StatsSectionKeyValuePair
-                  name="Stars"
-                  value={
-                    this.state.gitData && this.state.gitData.stargazers_count
-                  }
-                />
-                <StatsSectionKeyValuePair
-                  name="Forks"
-                  value={this.state.gitData && this.state.gitData.forks_count}
-                />
-                <StatsSectionKeyValuePair
-                  name="Issues"
-                  value={this.state.gitData && this.state.gitData.open_issues}
-                />
+      <RepositoryController owner={this.props.user} slug={this.props.repo}>
+        {data => {
+          return (
+            <Card elevation={1}>
+              <CardHeader title="MDX" />
+              <CardContentWithGrid>
+                <MdContent>
+                  <div
+                    className="markdown-body"
+                    dangerouslySetInnerHTML={{ __html: data.readmeData }}
+                  />
+                </MdContent>
+                <StatsContainer>
+                  <StatsSticky>
+                    <StatsSection>
+                      <Typography type="h4" margin={6}>
+                        Meta
+                      </Typography>
+                      <StatsSectionKeyValuePair
+                        name="License"
+                        value={
+                          data.gitData &&
+                          data.gitData.license &&
+                          data.gitData.license.spdx_id
+                        }
+                      />
+                      <StatsSectionKeyValuePair
+                        name="Stars"
+                        value={data.gitData && data.gitData.stargazers_count}
+                      />
+                      <StatsSectionKeyValuePair
+                        name="Forks"
+                        value={data.gitData && data.gitData.forks_count}
+                      />
+                      <StatsSectionKeyValuePair
+                        name="Issues"
+                        value={data.gitData && data.gitData.open_issues}
+                      />
 
-                <StatsSectionKeyValuePair
-                  name="Language"
-                  value={this.state.gitData && this.state.gitData.language}
-                />
-              </StatsSection>
-              <StatsSection>
-                <Typography type="h4" margin={6}>
-                  Activity
-                </Typography>
-                {this.state.commitData && (
-                  <Sparklines data={this.state.commitData} height={90}>
-                    <SparklinesCurve color="#000" />
-                  </Sparklines>
-                )}
-              </StatsSection>
-              <StatsSection>
-                <Typography type="h4" margin={6}>
-                  Links
-                </Typography>
-                <StatsSectionKeyValuePair
-                  noHalfDisection={true}
-                  name={<GitHubIcon style={{ height: "30px" }} />}
-                  value={this.state.gitData && this.state.gitData.full_name}
-                />
-                <StatsSectionKeyValuePair
-                  noHalfDisection={true}
-                  name={<HouseIcon style={{ height: "32px" }} />}
-                  value={
-                    this.state.gitData && this.state.gitData.homepage && "Visit"
-                  }
-                />
-              </StatsSection>
-            </StatsSticky>
-          </StatsContainer>
-        </CardContentWithGrid>
-      </Card>
+                      <StatsSectionKeyValuePair
+                        name="Language"
+                        value={data.gitData && data.gitData.language}
+                      />
+                    </StatsSection>
+                    <StatsSection>
+                      <Typography type="h4" margin={6}>
+                        Activity
+                      </Typography>
+                      {data.commitData && (
+                        <Sparklines data={data.commitData.all} height={90}>
+                          <SparklinesCurve color="#000" />
+                        </Sparklines>
+                      )}
+                    </StatsSection>
+                    <StatsSection>
+                      <Typography type="h4" margin={6}>
+                        Links
+                      </Typography>
+                      <StatsSectionKeyValuePair
+                        noHalfDisection={true}
+                        name={<GitHubIcon style={{ height: "30px" }} />}
+                        value={data.gitData && data.gitData.full_name}
+                      />
+                      <StatsSectionKeyValuePair
+                        noHalfDisection={true}
+                        name={<HouseIcon style={{ height: "32px" }} />}
+                        value={data.gitData && data.gitData.homepage && "Visit"}
+                      />
+                    </StatsSection>
+                  </StatsSticky>
+                </StatsContainer>
+              </CardContentWithGrid>
+            </Card>
+          );
+        }}
+      </RepositoryController>
     );
   }
 }

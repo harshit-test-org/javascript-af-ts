@@ -62,6 +62,12 @@ const server = new ApolloServer({
       user: req.user
     };
   },
+  playground:{
+    settings:{
+      'editor.cursorShape':'line',
+      'request.credentials':'include'
+    }
+  },
   schema
 });
 

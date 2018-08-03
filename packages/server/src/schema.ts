@@ -24,6 +24,7 @@ const typeDefs = gql`
     githubUrl: String!
     githubName: String!
     githubOwner: String!
+    ownerUsername: String!
     isFeatured: Boolean
     description: String
     owner: User @relation(name: "OWNER", direction: "IN")

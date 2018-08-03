@@ -10,7 +10,7 @@ const { Provider: AuthProvider, Consumer: AuthConsumer } = React.createContext({
 
 export { AuthConsumer, AuthProvider };
 
-const QmeQuery = gql`
+export const QmeQuery = gql`
   query meQuery {
     getUserInfo {
       name

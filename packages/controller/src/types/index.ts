@@ -30,10 +30,10 @@ export interface NewsItemQuery {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: RepositoryQuery
+// GraphQL query operation: RepositoriesQuery
 // ====================================================
 
-export interface RepositoryQuery_getRepositories {
+export interface RepositoriesQuery_getRepositories {
   id: string;
   githubName: string;
   githubOwner: string;
@@ -42,8 +42,37 @@ export interface RepositoryQuery_getRepositories {
   createdAt: string;
 }
 
+export interface RepositoriesQuery {
+  getRepositories: RepositoriesQuery_getRepositories[] | null;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: RepositoryQuery
+// ====================================================
+
+export interface RepositoryQuery_getRepositoryBySlug {
+  id: string;
+  slug: string;
+  githubUrl: string;
+  githubName: string;
+  githubOwner: string;
+  ownerUsername: string;
+  isFeatured: boolean | null;
+  description: string | null;
+  createdAt: string;
+}
+
 export interface RepositoryQuery {
-  getRepositories: RepositoryQuery_getRepositories[] | null;
+  getRepositoryBySlug: RepositoryQuery_getRepositoryBySlug | null;
+}
+
+export interface RepositoryQueryVariables {
+  slug: string;
+  ownerUsername: string;
 }
 
 
