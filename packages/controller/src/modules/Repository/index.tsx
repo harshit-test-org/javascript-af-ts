@@ -58,7 +58,6 @@ class R extends React.Component<
     }
   };
   componentDidMount() {
-    console.log(this.props);
     if (this.props.RepoQuery.loading || this.props.MeQuery.loading) {
       return;
     }
@@ -67,13 +66,11 @@ class R extends React.Component<
       RepoQuery: {
         getRepositoryBySlug: { githubName: repo, githubOwner: user }
       },
-      MeQuery: {
-        getUserInfo: { githubToken }
-      }
+      MeQuery
     } = this.props;
     let token = "";
-    if (githubToken) {
-      token = `?access_token=${githubToken}`;
+    if (MeQuery.getUserInfo) {
+      token = `?access_token=${MeQuery.getUserInfo.githubToken}`;
     }
     fetch(`https://api.github.com/repos/${user}/${repo}${token}`)
       .then(response => response.json())

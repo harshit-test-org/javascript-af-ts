@@ -21,7 +21,7 @@ const LayoutContainer = styled.div`
 const ContentContainer = styled.div`
   margin-top: 56px;
   margin-left: 94px;
-  transition: 0.2s all ease;
+  transition: all 0.4s ease-in-out;
   width: calc(100% - 94px);
   &.jsui-content-expanded {
     margin-left: 248px;
@@ -65,7 +65,7 @@ const DrawerMenuItemWithExpansion = styled(DrawerMenuItem)`
   padding: 0.6rem;
   padding-left: 1.275rem;
   cursor: pointer;
-  transition: 0.2s all ease;
+  transition: all 0.4s ease-in-out;
   &.jsui-draweritem-collapsed {
     & .jsui-drawermenu-text {
       display: none;
@@ -90,7 +90,7 @@ const DrawerMenuItemWithExpansion = styled(DrawerMenuItem)`
     }
   }
   & svg {
-    transition: all 0.2s ease;
+    transition: all 0.4s ease-in-out;
   }
   &:hover {
     background: #fff;
@@ -155,7 +155,9 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           className={classNames({
             "jsui-drawer-collapsed": this.state.collapsed
           })}
-          logo={"https://beta.javascript.af/static/logo.png"}
+          logo={
+            "https://uploads.codesandbox.io/uploads/user/e59603ee-ad08-4d84-8a86-840c67d4ddfc/RQ---logo.png"
+          }
         >
           <DrawerMenuItemWithExpansion
             className={classNames({

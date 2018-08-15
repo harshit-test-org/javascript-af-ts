@@ -97,7 +97,7 @@ const StatsContainer = styled.div`
 `;
 
 const StatsSticky = styled.div`
-  @media all and (min-height: 690px) {
+  @media all and (min-height: 655px) {
     position: sticky;
     top: 46px;
     display: flex;
