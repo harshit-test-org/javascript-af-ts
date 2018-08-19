@@ -1,6 +1,7 @@
 import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
 import { v1 as neo4j } from "neo4j-driver";
 import typeDefs from "./schema";
+import { augmentSchema } from "neo4j-graphql-js";
 import resolvers from "./resolvers";
 import authInit from "./utils/passport";
 import * as initStore from "connect-redis";
@@ -17,10 +18,12 @@ const RedisStore = initStore(session);
 const redisClient = new Redis(process.env.REDIS_HOST);
 
 const app = express();
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
-});
+const schema = augmentSchema(
+  makeExecutableSchema({
+    typeDefs,
+    resolvers
+  })
+);
 app.use(
   session({
     secret: process.env.COOKIE_SIGNING_SECRET,
@@ -62,10 +65,10 @@ const server = new ApolloServer({
       user: req.user
     };
   },
-  playground:{
-    settings:{
-      'editor.cursorShape':'line',
-      'request.credentials':'include'
+  playground: {
+    settings: {
+      "editor.cursorShape": "line",
+      "request.credentials": "include"
     }
   },
   schema
@@ -97,5 +100,5 @@ server.applyMiddleware({ app, cors: corsMW, path: "/graphql" });
 
 app.listen(8080, () => {
   // tslint:disable-next-line
-  console.log(`Server started on https://localhost:8080`);
+  console.log(`Server started on http://localhost:8080`);
 });
