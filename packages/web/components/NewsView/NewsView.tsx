@@ -1,12 +1,12 @@
-import * as React from "react";
-import styled from "styled-components";
-import { Typography, CardContent } from "javascript-af-ui";
+import * as React from 'react';
+import styled from 'styled-components';
+import { Typography, CardContent } from 'javascript-af-ui';
 
 const CardWithGrid = styled.div`
   display: grid;
   grid-template-columns: 75% 1fr;
   grid-template-rows: 70vh 1fr;
-  grid-template-areas: "picture picture" "content side";
+  grid-template-areas: 'picture picture' 'content side';
 `;
 
 interface CardMediaProps {
@@ -41,13 +41,14 @@ const CardMedia = styled.div`
   }
 `;
 
-const Content = styled(CardContent)`
+const Content = styled.div`
   grid-area: content;
-  font-family: "Fira Sans", sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 22px;
   line-height: 40px;
   padding: 0 4rem;
   p {
+    font-family: 'Fira Sans', sans-serif;
     margin: 20px 0;
     color: rgba(0, 0, 0, 0.84);
   }
@@ -65,14 +66,14 @@ const SideSection = styled.div`
   position: relative;
   h4 {
     margin: 6px 0;
-    font-family: "Fira Sans Extra Condensed", sans-serif;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
     text-transform: uppercase;
     width: max-content;
     border-bottom: 1px solid #6200ee;
   }
   padding: 1rem 0.5rem;
   ::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     width: 75%;
@@ -92,8 +93,7 @@ const TwitterIcon = props => (
     viewBox="328 355 335 276"
     width="400"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+    {...props}>
     <path
       d="
     M 630, 425
@@ -122,8 +122,7 @@ const RedditIcon = props => (
     height="24"
     viewBox="0 0 24 24"
     fill="#ffffff"
-    {...props}
-  >
+    {...props}>
     <path d="M14.238 15.348c.085.084.085.221 0 .306-.465.462-1.194.687-2.231.687l-.008-.002-.008.002c-1.036 0-1.766-.225-2.231-.688-.085-.084-.085-.221 0-.305.084-.084.222-.084.307 0 .379.377 1.008.561 1.924.561l.008.002.008-.002c.915 0 1.544-.184 1.924-.561.085-.084.223-.084.307 0zm-3.44-2.418c0-.507-.414-.919-.922-.919-.509 0-.923.412-.923.919 0 .506.414.918.923.918.508.001.922-.411.922-.918zm13.202-.93c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-5-.129c0-.851-.695-1.543-1.55-1.543-.417 0-.795.167-1.074.435-1.056-.695-2.485-1.137-4.066-1.194l.865-2.724 2.343.549-.003.034c0 .696.569 1.262 1.268 1.262.699 0 1.267-.566 1.267-1.262s-.568-1.262-1.267-1.262c-.537 0-.994.335-1.179.804l-2.525-.592c-.11-.027-.223.037-.257.145l-.965 3.038c-1.656.02-3.155.466-4.258 1.181-.277-.255-.644-.415-1.05-.415-.854.001-1.549.693-1.549 1.544 0 .566.311 1.056.768 1.325-.03.164-.05.331-.05.5 0 2.281 2.805 4.137 6.253 4.137s6.253-1.856 6.253-4.137c0-.16-.017-.317-.044-.472.486-.261.82-.766.82-1.353zm-4.872.141c-.509 0-.922.412-.922.919 0 .506.414.918.922.918s.922-.412.922-.918c0-.507-.413-.919-.922-.919z" />
   </svg>
 );
@@ -134,7 +133,7 @@ interface BProps {
 }
 
 const BrandButton = styled.button`
-  font-family: "Fira Mono", sans-serif;
+  font-family: 'Fira Mono', sans-serif;
   font-size: 1.2rem;
   background: ${(props: BProps) => props.bg};
   font-weight: 600;
@@ -165,8 +164,7 @@ export class NewsView extends React.Component {
     return (
       <CardWithGrid>
         <CardMedia
-          img={`https://techcrunch.com/wp-content/uploads/2018/08/twitterrific.jpg?w=1390&crop=1`}
-        >
+          img={`https://techcrunch.com/wp-content/uploads/2018/08/twitterrific.jpg?w=1390&crop=1`}>
           <Typography type="h1" color="#fff">
             Twitter is killing third party apps
           </Typography>

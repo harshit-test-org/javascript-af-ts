@@ -52,7 +52,6 @@ const ContentSection = styled.div`
   display: grid;
   height: 100%;
   grid-template-columns: 1.7fr 0.3fr;
-  grid-template-rows: ;
   grid-template-areas: "content ads";
   .content {
     grid-area: content;
