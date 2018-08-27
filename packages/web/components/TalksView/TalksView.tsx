@@ -18,13 +18,14 @@ const TimeIcon = props => (
 const TalksGrid = styled.div`
   display: grid;
   grid-gap: 0.5rem;
-  grid-template-columns: 1fr 25%;
+  grid-template-columns: 1fr 33%;
   grid-template-rows: 75vh 1fr;
   grid-template-areas: 'video side' ' info side';
 `;
 
 const VideoArea = styled.div`
   grid-area: video;
+  padding: 1rem;
   iframe {
     border: 0;
     height: 100%;
@@ -36,7 +37,7 @@ const InfoArea = styled.div`
   grid-area: info;
   display: grid;
   grid-template-rows: 2rem 1fr;
-  grid-template-columns: 1fr 20%;
+  grid-template-columns: 1fr 15%;
   padding: 1rem;
   .heading {
     grid-row: 2 / 3;
@@ -72,6 +73,57 @@ const InfoArea = styled.div`
     }
   }
 `;
+
+const PreviewArea = styled.div`
+  grid-area: side;
+`;
+
+const VideoPreviewStyles = styled.div`
+  display: flex;
+  padding-top: 1rem;
+  .image {
+    img {
+      height: auto;
+      width: 168px;
+    }
+  }
+  .info {
+    flex: 1;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    span {
+      display: -webkit-box;
+      font-size: 0.9rem;
+      font-weight: 600;
+      max-height: 2rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: normal;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+`;
+
+const VideoPreview = props => {
+  return (
+    <VideoPreviewStyles>
+      <div className="image">
+        <img
+          src="https://i.ytimg.com/vi/z-6JC0_cOns/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBN7tX3k--W4L8mgxQ0Hiz2fwsdww"
+          alt=""
+        />
+      </div>
+      <div className="info">
+        <Typography type="span" margin={0}>
+          React Suspance Lorem ipsum dolor sit amet consectetur adipisicing
+          elit.
+        </Typography>
+      </div>
+    </VideoPreviewStyles>
+  );
+};
 
 export class TalksView extends React.Component {
   render() {
@@ -111,6 +163,13 @@ export class TalksView extends React.Component {
             </Typography>
           </div>
         </InfoArea>
+        <PreviewArea>
+          <VideoPreview />
+          <VideoPreview />
+          <VideoPreview />
+          <VideoPreview />
+          <VideoPreview />
+        </PreviewArea>
       </TalksGrid>
     );
   }
