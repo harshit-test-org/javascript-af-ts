@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Typography } from 'javascript-af-ui';
+import { Typography, CardContent, Card } from 'javascript-af-ui';
 
 const CardWithGrid = styled.div`
   display: grid;
@@ -132,6 +132,9 @@ interface BProps {
   size: string;
 }
 
+const CardWithMargin = styled(Card)`
+  margin: 0.5rem 0;
+`;
 const BrandButton = styled.button`
   font-family: 'Fira Mono', sans-serif;
   font-size: 1.2rem;
@@ -219,6 +222,47 @@ export class NewsView extends React.Component {
                 <RedditIcon /> <span className="text">Reddit!</span>
               </BrandButton>
             </div>
+          </SideSection>
+          <SideSection>
+            <Typography type="h4" margin={6}>
+              Ad
+            </Typography>
+            <div
+              style={{ height: '300px', width: '100%', background: '#eee' }}
+            />
+          </SideSection>
+          <SideSection>
+            <Typography type="h4" margin={6}>
+              You Might Like
+            </Typography>
+            <CardWithMargin elevation={2}>
+              <CardContent>
+                <Typography component="p" type="h5">
+                  Zeit released v2 of hyper terminal
+                </Typography>
+              </CardContent>
+            </CardWithMargin>
+            <CardWithMargin elevation={2}>
+              <CardContent>
+                <Typography component="p" type="h5" margin={6}>
+                  Nextjs hit v6.1.1
+                </Typography>
+              </CardContent>
+            </CardWithMargin>
+            <CardWithMargin elevation={2}>
+              <CardContent>
+                <Typography component="p" type="h5" margin={6}>
+                  Apollo teased the defer features incoming
+                </Typography>
+              </CardContent>
+            </CardWithMargin>
+            <CardWithMargin elevation={2}>
+              <CardContent>
+                <Typography component="p" type="h5" margin={6}>
+                  Andrew Clark gave demo with 'Suspense'
+                </Typography>
+              </CardContent>
+            </CardWithMargin>
           </SideSection>
         </SideBar>
       </CardWithGrid>
