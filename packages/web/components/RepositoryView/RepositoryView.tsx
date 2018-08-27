@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { Typography, Card, CardContent, CardHeader } from "javascript-af-ui";
-import { Sparklines, SparklinesCurve } from "react-sparklines";
-import GitHubIcon from "../../icons/GithubIcon";
-import HouseIcon from "../../icons/HouseIcon";
-import "github-markdown-css";
-import { RepositoryController } from "@jsaf/controller";
+import React from 'react';
+import styled from 'styled-components';
+import { Typography, Card, CardContent, CardHeader } from 'javascript-af-ui';
+import { Sparklines, SparklinesCurve } from 'react-sparklines';
+import GitHubIcon from '../../icons/GithubIcon';
+import HouseIcon from '../../icons/HouseIcon';
+import 'github-markdown-css';
+import { RepositoryController } from '@jsaf/controller';
 
 const CardContentWithGrid = styled(CardContent)`
   display: grid;
   grid-template-columns: 75% 1fr;
   grid-gap: 6px;
-  grid-template-areas: "md_content stats";
+  grid-template-areas: 'md_content stats';
   @media all and (max-width: 880px) {
     display: flex;
     flex-direction: column;
@@ -28,14 +28,14 @@ const StatsSection = styled.div`
   position: relative;
   h4 {
     margin: 6px 0;
-    font-family: "Fira Sans Extra Condensed", sans-serif;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
     text-transform: uppercase;
     width: max-content;
     border-bottom: 1px solid #6200ee;
   }
   padding: 1rem 0.5rem;
   ::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     width: 75%;
@@ -60,16 +60,16 @@ const StatsSectionKeyValuePairStyled = styled.div`
   }
   .jsui-stats-section-name {
     flex: ${(props: StatsSectionKeyValuePairStyledProps) =>
-      props.noHalfDisection ? "unset" : 1};
+      props.noHalfDisection ? 'unset' : 1};
     font-weight: 300;
     opacity: 0.75;
   }
   .jsui-stats-section-value {
     flex: 1;
     margin-left: ${(props: StatsSectionKeyValuePairStyledProps) =>
-      props.noHalfDisection ? "1rem" : "unset"};
+      props.noHalfDisection ? '1rem' : 'unset'};
     font-weight: 300;
-    font-family: "Fira Sans Extra Condensed", sans-serif;
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
   }
 `;
 const StatsSectionKeyValuePair: React.SFC<{
@@ -172,13 +172,13 @@ class RepositoryView extends React.Component<{ user: string; repo: string }> {
                       </Typography>
                       <StatsSectionKeyValuePair
                         noHalfDisection={true}
-                        name={<GitHubIcon style={{ height: "30px" }} />}
+                        name={<GitHubIcon style={{ height: '30px' }} />}
                         value={data.gitData && data.gitData.full_name}
                       />
                       <StatsSectionKeyValuePair
                         noHalfDisection={true}
-                        name={<HouseIcon style={{ height: "32px" }} />}
-                        value={data.gitData && data.gitData.homepage && "Visit"}
+                        name={<HouseIcon style={{ height: '32px' }} />}
+                        value={data.gitData && data.gitData.homepage && 'Visit'}
                       />
                     </StatsSection>
                   </StatsSticky>

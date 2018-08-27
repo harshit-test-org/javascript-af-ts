@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Typography, CardContent } from 'javascript-af-ui';
+import { Typography } from 'javascript-af-ui';
 
 const CardWithGrid = styled.div`
   display: grid;
