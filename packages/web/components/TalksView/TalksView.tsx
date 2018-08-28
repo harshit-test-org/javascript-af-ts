@@ -18,14 +18,13 @@ const TimeIcon = props => (
 const TalksGrid = styled.div`
   display: grid;
   grid-gap: 0.5rem;
-  grid-template-columns: 1fr 33%;
+  grid-template-columns: 1fr 28%;
   grid-template-rows: 75vh 1fr;
-  grid-template-areas: 'video side' ' info side';
+  grid-template-areas: 'video video' ' info side';
 `;
 
 const VideoArea = styled.div`
   grid-area: video;
-  padding: 1rem;
   iframe {
     border: 0;
     height: 100%;
@@ -103,6 +102,12 @@ const VideoPreviewStyles = styled.div`
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
+    .subinfo {
+      padding-top: 0.5rem;
+      span {
+        font-weight: 300;
+      }
+    }
   }
 `;
 
@@ -120,6 +125,12 @@ const VideoPreview = props => {
           React Suspance Lorem ipsum dolor sit amet consectetur adipisicing
           elit.
         </Typography>
+        <div className="subinfo">
+          <Typography type="span">Andrew Clark</Typography>
+          <Typography type="span" className="time">
+            20 mins
+          </Typography>
+        </div>
       </div>
     </VideoPreviewStyles>
   );
