@@ -113,22 +113,18 @@ const VideoPreviewStyles = styled.div`
 
 const VideoPreview = props => {
   return (
-    <VideoPreviewStyles>
+    <VideoPreviewStyles {...props}>
       <div className="image">
-        <img
-          src="https://i.ytimg.com/vi/z-6JC0_cOns/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBN7tX3k--W4L8mgxQ0Hiz2fwsdww"
-          alt=""
-        />
+        <img src={props.img} alt="" />
       </div>
       <div className="info">
         <Typography type="span" margin={0}>
-          React Suspance Lorem ipsum dolor sit amet consectetur adipisicing
-          elit.
+          {props.title}
         </Typography>
         <div className="subinfo">
-          <Typography type="span">Andrew Clark</Typography>
+          <Typography type="span">{props.speaker}</Typography>
           <Typography type="span" className="time">
-            20 mins
+            {props.time}
           </Typography>
         </div>
       </div>
@@ -175,11 +171,24 @@ export class TalksView extends React.Component {
           </div>
         </InfoArea>
         <PreviewArea>
-          <VideoPreview />
-          <VideoPreview />
-          <VideoPreview />
-          <VideoPreview />
-          <VideoPreview />
+          <VideoPreview
+            img="https://img.youtube.com/vi/cZeWjYVNWfU/maxresdefault.jpg"
+            time="59 mins"
+            title="Using New Web APIs For Your Own Pleasure"
+            speaker="Michaela Lehr"
+          />
+          <VideoPreview
+            img="https://img.youtube.com/vi/maykR0aVsj8/maxresdefault.jpg"
+            time="54 mins"
+            title="We All Started Somewhere"
+            speaker="Preethi Kasireddy"
+          />
+          <VideoPreview
+            img="https://i.ytimg.com/vi/z-6JC0_cOns/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBN7tX3k--W4L8mgxQ0Hiz2fwsdww"
+            time="20 mins"
+            title="React Suspance"
+            speaker="Andrew Clark"
+          />
         </PreviewArea>
       </TalksGrid>
     );

@@ -44,7 +44,7 @@
     "tslint-react": "^3.6.0"
   },
   "resolutions": {
-    "next": "7.0.0-canary.0"
+    "next": "7.0.0-canary.5"
   },
   "husky": {
     "hooks": {
