@@ -1,10 +1,9 @@
-import * as React from "react";
-import Layout from "../components/Layouts";
-import { NewsView } from "../components/NewsView";
+import * as React from 'react';
+import Layout from '../components/Layouts';
+import { NewsView } from '../components/NewsView';
 
 export default class Repository extends React.Component<{
-  user: string;
-  repo: string;
+  slug: string;
 }> {
   static getInitialProps = ({ query }) => {
     return query;
@@ -12,7 +11,7 @@ export default class Repository extends React.Component<{
   render() {
     return (
       <Layout>
-        <NewsView />
+        <NewsView slug={this.props.slug} />
       </Layout>
     );
   }

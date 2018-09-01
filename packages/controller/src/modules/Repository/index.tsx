@@ -1,13 +1,13 @@
-import * as React from "react";
-import { graphql, DataValue } from "react-apollo";
-import { QmeQuery } from "../User";
-import gql from "graphql-tag";
+import * as React from 'react';
+import { graphql, DataValue } from 'react-apollo';
+import { QmeQuery } from '../User';
+import gql from 'graphql-tag';
 import {
   RepositoryQuery,
   RepositoryQueryVariables,
   meQuery
-} from "../../types";
-import { GithubApi } from "./githubApiInterface";
+} from '../../types';
+import { GithubApi } from './githubApiInterface';
 
 const RepositoryQuery = gql`
   query RepositoryQuery($slug: String!, $ownerUsername: String!) {
@@ -51,7 +51,7 @@ class R extends React.Component<
 > {
   state: State = {
     gitData: null,
-    readmeData: "",
+    readmeData: '',
     commitData: {
       all: [],
       owner: []
@@ -68,7 +68,7 @@ class R extends React.Component<
       },
       MeQuery
     } = this.props;
-    let token = "";
+    let token = '';
     if (MeQuery.getUserInfo) {
       token = `?access_token=${MeQuery.getUserInfo.githubToken}`;
     }
@@ -77,7 +77,7 @@ class R extends React.Component<
       .then(res => this.setState({ gitData: res }));
     fetch(`https://api.github.com/repos/${user}/${repo}/readme${token}`, {
       headers: {
-        Accept: "application/vnd.github.VERSION.html"
+        Accept: 'application/vnd.github.VERSION.html'
       }
     })
       .then(res => res.text())
@@ -110,13 +110,13 @@ const RepositoryController = graphql<
   RepositoryQuery,
   RepositoryQueryVariables
 >(RepositoryQuery, {
-  name: "RepoQuery",
+  name: 'RepoQuery',
   options: (props: Props) => ({
     variables: {
       slug: props.slug,
       ownerUsername: props.owner
     }
   })
-})(graphql<Props, meQuery>(QmeQuery, { name: "MeQuery" })(R));
+})(graphql<Props, meQuery>(QmeQuery, { name: 'MeQuery' })(R));
 
 export { RepositoryController };

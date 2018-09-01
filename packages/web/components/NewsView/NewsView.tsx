@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Typography, CardContent, Card } from 'javascript-af-ui';
+import { NewsItemController } from '@jsaf/controller';
 
 const CardWithGrid = styled.div`
   display: grid;
@@ -162,110 +163,88 @@ const BrandButton = styled.button`
   }
 `;
 
-export class NewsView extends React.Component {
+export class NewsView extends React.Component<{ slug: string }> {
   render() {
     return (
-      <CardWithGrid>
-        <CardMedia
-          img={`https://techcrunch.com/wp-content/uploads/2018/08/twitterrific.jpg?w=1390&crop=1`}>
-          <Typography type="h1" color="#fff">
-            Twitter is killing third party apps
-          </Typography>
-        </CardMedia>
-        <Content>
-          <p>
-            If you’re a certain age, it’s likely that you’ve never given a
-            second thought to buying a municipal bond or the process of bond
-            buying, even if you’ve intuited, rightly, that’s it’s an
-            intentionally opaque business.
-          </p>
-          <p>
-            Yet there could be a big opportunity for startups, and for people
-            looking for places to invest, and for cities with crumbling
-            infrastructures, in disrupting the status quo — if only more
-            Americans start playing attention.
-          </p>
-          <p>
-            First, there’s a strong case for buying bonds. Late last year, the
-            Trump administration capped at $10,000 the amount that taxpayers can
-            deduct in property tax and local and state income tax. Most people
-            with hefty tax bills are benefiting in other ways from that same new
-            tax bill, but this aspect of it isn’t so great for them, and
-            municipal bonds can help. The reason: interest income paid on muni
-            bonds is exempt from federal tax. (Bonds issued within one’s state
-            can also be free of state tax.)
-          </p>
-          <p>
-            What about people without hefty tax bills? For one thing, bonds are
-            a very safe investment. They’re not sexy, it’s true ( they typically
-            deliver interest in the single digits), but they also feature low
-            default rates. Whether debts from states, cities, or counties,
-            they’re typically government guaranteed and paid back in full at the
-            end of their term. In fact, muni bond default rates have been as low
-            as below .03 percent over the last decade. What’s also compelling —
-            perhaps even more so — is that bonds can give residents an
-            opportunity to help out the community where they live. For example,
-            Oakland, Ca. voters in 2016 overwhelmingly approved a $600 million
-            bond to fix old city streets and build affordable housing.
-          </p>
-        </Content>
-        <SideBar>
-          <SideSection>
-            <Typography type="h4" margin={6}>
-              Share
-            </Typography>
-            <div className="button-container">
-              <BrandButton size="28px" bg="#00aced">
-                <TwitterIcon /> <span className="text">Tweet it!</span>
-              </BrandButton>
-              <BrandButton size="32px" bg="#FF5700">
-                <RedditIcon /> <span className="text">Reddit!</span>
-              </BrandButton>
-            </div>
-          </SideSection>
-          <SideSection>
-            <Typography type="h4" margin={6}>
-              Ad
-            </Typography>
-            <div
-              style={{ height: '300px', width: '100%', background: '#eee' }}
-            />
-          </SideSection>
-          <SideSection>
-            <Typography type="h4" margin={6}>
-              You Might Like
-            </Typography>
-            <CardWithMargin elevation={2}>
-              <CardContent>
-                <Typography component="p" type="h5">
-                  Zeit released v2 of hyper terminal
+      <NewsItemController slug={this.props.slug}>
+        {({ data, loading }) => {
+          if (loading) {
+            return <div>loading....</div>;
+          }
+          return (
+            <CardWithGrid>
+              <CardMedia img={data.previewImage}>
+                <Typography type="h1" color="#fff">
+                  {data.title}
                 </Typography>
-              </CardContent>
-            </CardWithMargin>
-            <CardWithMargin elevation={2}>
-              <CardContent>
-                <Typography component="p" type="h5" margin={6}>
-                  Nextjs hit v6.1.1
-                </Typography>
-              </CardContent>
-            </CardWithMargin>
-            <CardWithMargin elevation={2}>
-              <CardContent>
-                <Typography component="p" type="h5" margin={6}>
-                  Apollo teased the defer features incoming
-                </Typography>
-              </CardContent>
-            </CardWithMargin>
-            <CardWithMargin elevation={2}>
-              <CardContent>
-                <Typography component="p" type="h5" margin={6}>
-                  Andrew Clark gave demo with 'Suspense'
-                </Typography>
-              </CardContent>
-            </CardWithMargin>
-          </SideSection>
-        </SideBar>
-      </CardWithGrid>
+              </CardMedia>
+              <Content>
+                <p>{data.content}</p>
+              </Content>
+              <SideBar>
+                <SideSection>
+                  <Typography type="h4" margin={6}>
+                    Share
+                  </Typography>
+                  <div className="button-container">
+                    <BrandButton size="28px" bg="#00aced">
+                      <TwitterIcon /> <span className="text">Tweet it!</span>
+                    </BrandButton>
+                    <BrandButton size="32px" bg="#FF5700">
+                      <RedditIcon /> <span className="text">Reddit!</span>
+                    </BrandButton>
+                  </div>
+                </SideSection>
+                <SideSection>
+                  <Typography type="h4" margin={6}>
+                    Ad
+                  </Typography>
+                  <div
+                    style={{
+                      height: '300px',
+                      width: '100%',
+                      background: '#eee'
+                    }}
+                  />
+                </SideSection>
+                <SideSection>
+                  <Typography type="h4" margin={6}>
+                    You Might Like
+                  </Typography>
+                  <CardWithMargin elevation={2}>
+                    <CardContent>
+                      <Typography component="p" type="h5">
+                        Zeit released v2 of hyper terminal
+                      </Typography>
+                    </CardContent>
+                  </CardWithMargin>
+                  <CardWithMargin elevation={2}>
+                    <CardContent>
+                      <Typography component="p" type="h5" margin={6}>
+                        Nextjs hit v6.1.1
+                      </Typography>
+                    </CardContent>
+                  </CardWithMargin>
+                  <CardWithMargin elevation={2}>
+                    <CardContent>
+                      <Typography component="p" type="h5" margin={6}>
+                        Apollo teased the defer features incoming
+                      </Typography>
+                    </CardContent>
+                  </CardWithMargin>
+                  <CardWithMargin elevation={2}>
+                    <CardContent>
+                      <Typography component="p" type="h5" margin={6}>
+                        Andrew Clark gave demo with 'Suspense'
+                      </Typography>
+                    </CardContent>
+                  </CardWithMargin>
+                </SideSection>
+              </SideBar>
+            </CardWithGrid>
+          );
+        }}
+      </NewsItemController>
     );
   }
 }

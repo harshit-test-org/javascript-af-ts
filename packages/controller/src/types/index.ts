@@ -1,5 +1,3 @@
-
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -7,24 +5,53 @@
 // GraphQL query operation: NewsItemQuery
 // ====================================================
 
-export interface NewsItemQuery_getNewsItems_writer {
+export interface NewsItemQuery_getNewsItemBySlug_writer {
   name: string;
 }
 
-export interface NewsItemQuery_getNewsItems {
+export interface NewsItemQuery_getNewsItemBySlug {
   id: string;
   title: string;
   slug: string;
   content: string;
-  writer: NewsItemQuery_getNewsItems_writer | null;
+  writer: NewsItemQuery_getNewsItemBySlug_writer | null;
   previewImage: string | null;
+  isFeatured: boolean | null;
   createdAt: string;
 }
 
 export interface NewsItemQuery {
-  getNewsItems: NewsItemQuery_getNewsItems[] | null;
+  getNewsItemBySlug: NewsItemQuery_getNewsItemBySlug | null;
 }
 
+export interface NewsItemQueryVariables {
+  slug: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: NewsItemsQuery
+// ====================================================
+
+export interface NewsItemsQuery_getNewsItems_writer {
+  name: string;
+}
+
+export interface NewsItemsQuery_getNewsItems {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  writer: NewsItemsQuery_getNewsItems_writer | null;
+  previewImage: string | null;
+  createdAt: string;
+}
+
+export interface NewsItemsQuery {
+  getNewsItems: NewsItemsQuery_getNewsItems[] | null;
+}
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -45,7 +72,6 @@ export interface RepositoriesQuery_getRepositories {
 export interface RepositoriesQuery {
   getRepositories: RepositoriesQuery_getRepositories[] | null;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
@@ -75,7 +101,6 @@ export interface RepositoryQueryVariables {
   ownerUsername: string;
 }
 
-
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
@@ -96,7 +121,6 @@ export interface TalksQuery_getTalks {
 export interface TalksQuery {
   getTalks: TalksQuery_getTalks[] | null;
 }
-
 
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
