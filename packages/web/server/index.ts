@@ -23,6 +23,13 @@ app.prepare().then(() => {
     });
   });
 
+  server.get('/t/:slug', (req, res) => {
+    return app.render(req, res, '/talk', {
+      slug: req.params.slug,
+      ...req.query
+    });
+  });
+
   server.get('*', (req, res) => {
     return handle(req, res);
   });

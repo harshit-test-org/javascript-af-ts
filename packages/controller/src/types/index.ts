@@ -105,6 +105,32 @@ export interface RepositoryQueryVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: TalkQuery
+// ====================================================
+
+export interface TalkQuery_getTalkBySlug {
+  id: string;
+  title: string;
+  slug: string;
+  iframe: string;
+  speaker: string | null;
+  previewImage: string;
+  isFeatured: boolean | null;
+  createdAt: string;
+}
+
+export interface TalkQuery {
+  getTalkBySlug: TalkQuery_getTalkBySlug | null;
+}
+
+export interface TalkQueryVariables {
+  slug: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: TalksQuery
 // ====================================================
 

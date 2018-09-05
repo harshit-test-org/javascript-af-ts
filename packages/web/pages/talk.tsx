@@ -3,8 +3,7 @@ import Layout from '../components/Layouts';
 import { TalksView } from '../components/TalksView';
 
 export default class Repository extends React.Component<{
-  user: string;
-  repo: string;
+  slug: string;
 }> {
   static getInitialProps = ({ query }) => {
     return query;
@@ -12,7 +11,7 @@ export default class Repository extends React.Component<{
   render() {
     return (
       <Layout>
-        <TalksView />
+        <TalksView slug={this.props.slug} />
       </Layout>
     );
   }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Typography } from 'javascript-af-ui';
+import { TalkController } from '@jsaf/controller';
 
 const TimeIcon = props => (
   <svg
@@ -132,65 +133,73 @@ const VideoPreview = props => {
   );
 };
 
-export class TalksView extends React.Component {
+export class TalksView extends React.Component<{ slug: string }> {
   render() {
     return (
-      <TalksGrid>
-        <VideoArea>
-          <iframe
-            src="https://www.youtube.com/embed/z-6JC0_cOns"
-            allowFullScreen={true}
-            frameBorder={0}
-          />
-        </VideoArea>
+      <TalkController slug={this.props.slug}>
+        {({ data, loading }) => {
+          if (loading) {
+            return <div>loading....</div>;
+          }
+          return (
+            <TalksGrid>
+              <VideoArea>
+                <iframe
+                  src={data.iframe}
+                  allowFullScreen={true}
+                  frameBorder={0}
+                />
+              </VideoArea>
 
-        <InfoArea>
-          <div className="tags">
-            <Typography type="h5" component="a" href="/something" margin={0}>
-              #programming
-            </Typography>
-          </div>
-          <div className="length">
-            <TimeIcon />
-            <Typography type="h5" margin={0}>
-              25 mins
-            </Typography>
-          </div>
-          <div className="heading">
-            <Typography type="h2" margin={0}>
-              React Suspance
-            </Typography>
-            <Typography component="p" margin={0}>
-              Async rendering in React gives us a powerful new set of primitives
-              for addressing longstanding problems in UI development. I'll
-              discuss React's vision for how async rendering can improve data
-              fetching, code delivery, prefetching, view transitions, and more.
-              You can read more about our products and mission here:
-              https://zeit.co
-            </Typography>
-          </div>
-        </InfoArea>
-        <PreviewArea>
-          <VideoPreview
-            img="https://img.youtube.com/vi/cZeWjYVNWfU/maxresdefault.jpg"
-            time="59 mins"
-            title="Using New Web APIs For Your Own Pleasure"
-            speaker="Michaela Lehr"
-          />
-          <VideoPreview
-            img="https://img.youtube.com/vi/maykR0aVsj8/maxresdefault.jpg"
-            time="54 mins"
-            title="We All Started Somewhere"
-            speaker="Preethi Kasireddy"
-          />
-          <VideoPreview
-            img="https://i.ytimg.com/vi/z-6JC0_cOns/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBN7tX3k--W4L8mgxQ0Hiz2fwsdww"
-            time="20 mins"
-            title="React Suspance"
-            speaker="Andrew Clark"
-          />
-        </PreviewArea>
-      </TalksGrid>
+              <InfoArea>
+                <div className="tags">
+                  <Typography
+                    type="h5"
+                    component="a"
+                    href="/something"
+                    margin={0}>
+                    #programming
+                  </Typography>
+                </div>
+                <div className="length">
+                  <TimeIcon />
+                  <Typography type="h5" margin={0}>
+                    25 mins
+                  </Typography>
+                </div>
+                <div className="heading">
+                  <Typography type="h2" margin={0}>
+                    {data.title}
+                  </Typography>
+                  <Typography component="p" margin={0}>
+                    {data.speaker}
+                  </Typography>
+                </div>
+              </InfoArea>
+              <PreviewArea>
+                <VideoPreview
+                  img="https://img.youtube.com/vi/cZeWjYVNWfU/maxresdefault.jpg"
+                  time="59 mins"
+                  title="Using New Web APIs For Your Own Pleasure"
+                  speaker="Michaela Lehr"
+                />
+                <VideoPreview
+                  img="https://img.youtube.com/vi/maykR0aVsj8/maxresdefault.jpg"
+                  time="54 mins"
+                  title="We All Started Somewhere"
+                  speaker="Preethi Kasireddy"
+                />
+                <VideoPreview
+                  img="https://i.ytimg.com/vi/z-6JC0_cOns/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBN7tX3k--W4L8mgxQ0Hiz2fwsdww"
+                  time="20 mins"
+                  title="React Suspance"
+                  speaker="Andrew Clark"
+                />
+              </PreviewArea>
+            </TalksGrid>
+          );
+        }}
+      </TalkController>
     );
   }
 }
