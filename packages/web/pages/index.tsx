@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Button,
   Typography,
@@ -6,19 +6,19 @@ import {
   Card,
   CardHeader,
   CardContent,
-  CardActions
-} from "javascript-af-ui";
-import Layout from "../components/Layouts";
+  CardActions,
+} from 'javascript-af-ui';
+import Layout from '../components/Layouts';
 import {
   RepositoriesController,
   NewsItemController,
-  TalksController
-} from "@jsaf/controller";
-import { HeroItem } from "../components/HeroItem";
-import shuffle from "lodash.shuffle";
-import { HERO_COLORS } from "../constants";
-import styled from "styled-components";
-import { NewsItem } from "../components/NewsItem";
+  TalksController,
+} from '@jsaf/controller';
+import { HeroItem } from '../components/HeroItem';
+import shuffle from 'lodash.shuffle';
+import { HERO_COLORS } from '../constants';
+import styled from 'styled-components';
+import { NewsItem } from '../components/NewsItem';
 
 const shuffled = shuffle(HERO_COLORS);
 
@@ -27,7 +27,7 @@ const HeroTop = styled.section`
   grid-gap: 1vw;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: repeat(3, minmax(15vh, 1fr));
-  grid-template-areas: "featured item1" "featured item2" "featured item3";
+  grid-template-areas: 'featured item1' 'featured item2' 'featured item3';
   & > :nth-child(1) {
     grid-area: featured;
     align-content: end;
@@ -44,7 +44,7 @@ const HeroTop = styled.section`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     grid-template-rows: 3fr repeat(3, minmax(15vh, 1fr));
-    grid-template-areas: "featured" "item2" "item3" "item1";
+    grid-template-areas: 'featured' 'item2' 'item3' 'item1';
   }
 `;
 
@@ -52,7 +52,7 @@ const ContentSection = styled.div`
   display: grid;
   height: 100%;
   grid-template-columns: 1.7fr 0.3fr;
-  grid-template-areas: "content ads";
+  grid-template-areas: 'content ads';
   .content {
     grid-area: content;
     margin-left: 0.5rem;
@@ -103,7 +103,7 @@ const Index: React.SFC = () => {
       <ContentSection>
         <div className="content">
           <ContentContainer>
-            <Typography type={"h3"} margin={6}>
+            <Typography type={'h3'} margin={6}>
               Repositories
             </Typography>
             <RepositoriesController>
@@ -118,7 +118,7 @@ const Index: React.SFC = () => {
                         key={item.id}
                         elevation={2}
                         style={{
-                          maxWidth: "300px"
+                          maxWidth: '300px',
                         }}
                       >
                         <CardHeader title={item.githubName} />
@@ -136,7 +136,7 @@ const Index: React.SFC = () => {
             </RepositoriesController>
           </ContentContainer>
           <ContentContainer>
-            <Typography type={"h3"} margin={10}>
+            <Typography type={'h3'} margin={10}>
               Latest Dev News
             </Typography>
             <NewsItemController>
@@ -145,13 +145,13 @@ const Index: React.SFC = () => {
                   return <h1>loading</h1>;
                 }
                 return (
-                  <div style={{ margin: "0 12px" }}>
+                  <div style={{ margin: '0 12px' }}>
                     {data.map(item => (
                       <NewsItem key={item.id} title={item.title}>
                         {item.content
-                          .split(" ")
+                          .split(' ')
                           .slice(0, 30)
-                          .join(" ")}
+                          .join(' ')}
                       </NewsItem>
                     ))}
                   </div>
@@ -160,7 +160,7 @@ const Index: React.SFC = () => {
             </NewsItemController>
           </ContentContainer>
           <ContentContainer>
-            <Typography type={"h3"} margin={10}>
+            <Typography type={'h3'} margin={10}>
               Popular Talks
             </Typography>
             <TalksController>
@@ -175,7 +175,7 @@ const Index: React.SFC = () => {
                         key={item.id}
                         elevation={2}
                         style={{
-                          maxWidth: "300px"
+                          maxWidth: '300px',
                         }}
                       >
                         <CardHeader title={item.title} />
