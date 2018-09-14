@@ -1,15 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import { Typography, Appbar, Drawer, Button } from "javascript-af-ui";
-import { DrawerMenuItem } from "javascript-af-ui/Drawer";
-import classNames from "classnames";
-import HomeIcon from "../../icons/HomeIcon";
-import HeadPhonesIcon from "../../icons/HeadPhonesIcon";
-import TrendingIcon from "../../icons/TrendingIcon";
-import NewsIcon from "../../icons/NewsIcon";
-import DrawerOpenIcon from "../../icons/DrawerOpenIcon";
-import DrawerCloseIcon from "../../icons/DrawerCloseIcon";
-import { User } from "@jsaf/controller";
+import React from 'react';
+import styled from 'styled-components';
+import { Typography, Appbar, Drawer, Button } from 'javascript-af-ui';
+import { DrawerMenuItem } from 'javascript-af-ui/Drawer';
+import classNames from 'classnames';
+import HomeIcon from '../../icons/HomeIcon';
+import HeadPhonesIcon from '../../icons/HeadPhonesIcon';
+import TrendingIcon from '../../icons/TrendingIcon';
+import NewsIcon from '../../icons/NewsIcon';
+import DrawerOpenIcon from '../../icons/DrawerOpenIcon';
+import DrawerCloseIcon from '../../icons/DrawerCloseIcon';
+import { User } from '@jsaf/controller';
+import Link from 'next/link';
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -141,11 +142,11 @@ const AppbarWithExapansion = styled(Appbar)`
 
 class Layout extends React.Component<{}, { collapsed: boolean }> {
   state = {
-    collapsed: true
+    collapsed: true,
   };
   handleExpansionToggle = () => {
     this.setState(s => ({
-      collapsed: !s.collapsed
+      collapsed: !s.collapsed,
     }));
   };
   render() {
@@ -153,48 +154,64 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
       <LayoutContainer>
         <DrawerWithExpansion
           className={classNames({
-            "jsui-drawer-collapsed": this.state.collapsed
+            'jsui-drawer-collapsed': this.state.collapsed,
           })}
           logo={
-            "https://uploads.codesandbox.io/uploads/user/e59603ee-ad08-4d84-8a86-840c67d4ddfc/RQ---logo.png"
+            'https://uploads.codesandbox.io/uploads/user/e59603ee-ad08-4d84-8a86-840c67d4ddfc/RQ---logo.png'
           }
         >
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
-            })}
-            icon={<HomeIcon />}
-          >
-            Repositories
-          </DrawerMenuItemWithExpansion>
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
-            })}
-            icon={<HeadPhonesIcon />}
-          >
-            Talks
-          </DrawerMenuItemWithExpansion>
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
-            })}
-            icon={<TrendingIcon />}
-          >
-            Featured
-          </DrawerMenuItemWithExpansion>
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
-            })}
-            icon={<NewsIcon />}
-          >
-            News
-          </DrawerMenuItemWithExpansion>
+          <Link href="/repos">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<HomeIcon />}
+              >
+                Repositories
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
+          <Link href="/talks">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<HeadPhonesIcon />}
+              >
+                Talks
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
+          <Link href="/featured">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<TrendingIcon />}
+              >
+                Featured
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
+          <Link href="/news">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<NewsIcon />}
+              >
+                News
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
         </DrawerWithExpansion>
         <AppbarWithExapansion
           className={classNames({
-            "jsui-appbar-expanded": !this.state.collapsed
+            'jsui-appbar-expanded': !this.state.collapsed,
           })}
         >
           <button
@@ -222,7 +239,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
                       <Button
                         onClick={() =>
                           window.location.replace(
-                            "http://localhost:8080/auth/github"
+                            'http://localhost:8080/auth/github'
                           )
                         }
                       >
@@ -237,7 +254,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
         </AppbarWithExapansion>
         <ContentContainer
           className={classNames({
-            "jsui-content-expanded": !this.state.collapsed
+            'jsui-content-expanded': !this.state.collapsed,
           })}
         >
           {this.props.children}
