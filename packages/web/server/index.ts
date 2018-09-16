@@ -13,20 +13,20 @@ app.prepare().then(() => {
     return app.render(req, res, '/repository', {
       user: req.params.user,
       repo: req.params.repo,
-      ...req.query
+      ...req.query,
     });
   });
   server.get('/n/:slug', (req, res) => {
     return app.render(req, res, '/news', {
       slug: req.params.slug,
-      ...req.query
+      ...req.query,
     });
   });
 
   server.get('/t/:slug', (req, res) => {
     return app.render(req, res, '/talk', {
       slug: req.params.slug,
-      ...req.query
+      ...req.query,
     });
   });
 

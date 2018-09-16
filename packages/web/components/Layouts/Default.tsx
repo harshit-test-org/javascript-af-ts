@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import { Typography, Appbar, Drawer, Button } from "javascript-af-ui";
-import { DrawerMenuItem } from "javascript-af-ui/Drawer";
-import classNames from "classnames";
-import HomeIcon from "../../icons/HomeIcon";
-import HeadPhonesIcon from "../../icons/HeadPhonesIcon";
-import TrendingIcon from "../../icons/TrendingIcon";
-import NewsIcon from "../../icons/NewsIcon";
-import DrawerOpenIcon from "../../icons/DrawerOpenIcon";
-import DrawerCloseIcon from "../../icons/DrawerCloseIcon";
-import { User } from "@jsaf/controller";
+import React from 'react';
+import styled from 'styled-components';
+import { Typography, Appbar, Drawer, Button } from 'javascript-af-ui';
+import { DrawerMenuItem } from 'javascript-af-ui/Drawer';
+import classNames from 'classnames';
+import HomeIcon from '../../icons/HomeIcon';
+import HeadPhonesIcon from '../../icons/HeadPhonesIcon';
+import TrendingIcon from '../../icons/TrendingIcon';
+import NewsIcon from '../../icons/NewsIcon';
+import DrawerOpenIcon from '../../icons/DrawerOpenIcon';
+import DrawerCloseIcon from '../../icons/DrawerCloseIcon';
+import { User } from '@jsaf/controller';
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -42,7 +42,11 @@ const DrawerWithExpansion = styled(Drawer)`
   left: 0;
   .logo {
     padding-left: 1.275rem;
-    padding-top: 0.7rem;
+    padding-top: 1.275rem;
+    img {
+      height: 42px;
+      width: 42px;
+    }
     @media all and (max-width: 480px) {
       display: none;
     }
@@ -83,10 +87,13 @@ const DrawerMenuItemWithExpansion = styled(DrawerMenuItem)`
   &:hover .jsui-drawermenu-text > h4 {
     color: ${props => props.theme.primaryColor} !important;
   }
+  & .jsui-drawermenu-icon svg {
+    fill: none;
+  }
   &:hover svg {
-    fill: ${props => props.theme.primaryColor};
+    stroke: ${props => props.theme.primaryColor};
     @media all and (max-width: 480px) {
-      fill: #ffffff;
+      stroke: #ffffff;
     }
   }
   & svg {
@@ -141,11 +148,11 @@ const AppbarWithExapansion = styled(Appbar)`
 
 class Layout extends React.Component<{}, { collapsed: boolean }> {
   state = {
-    collapsed: true
+    collapsed: true,
   };
   handleExpansionToggle = () => {
     this.setState(s => ({
-      collapsed: !s.collapsed
+      collapsed: !s.collapsed,
     }));
   };
   render() {
@@ -153,15 +160,13 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
       <LayoutContainer>
         <DrawerWithExpansion
           className={classNames({
-            "jsui-drawer-collapsed": this.state.collapsed
+            'jsui-drawer-collapsed': this.state.collapsed,
           })}
-          logo={
-            "https://uploads.codesandbox.io/uploads/user/e59603ee-ad08-4d84-8a86-840c67d4ddfc/RQ---logo.png"
-          }
+          logo={'/static/img/logo.svg'}
         >
           <DrawerMenuItemWithExpansion
             className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
+              'jsui-draweritem-collapsed': this.state.collapsed,
             })}
             icon={<HomeIcon />}
           >
@@ -169,7 +174,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           </DrawerMenuItemWithExpansion>
           <DrawerMenuItemWithExpansion
             className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
+              'jsui-draweritem-collapsed': this.state.collapsed,
             })}
             icon={<HeadPhonesIcon />}
           >
@@ -177,7 +182,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           </DrawerMenuItemWithExpansion>
           <DrawerMenuItemWithExpansion
             className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
+              'jsui-draweritem-collapsed': this.state.collapsed,
             })}
             icon={<TrendingIcon />}
           >
@@ -185,7 +190,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           </DrawerMenuItemWithExpansion>
           <DrawerMenuItemWithExpansion
             className={classNames({
-              "jsui-draweritem-collapsed": this.state.collapsed
+              'jsui-draweritem-collapsed': this.state.collapsed,
             })}
             icon={<NewsIcon />}
           >
@@ -194,7 +199,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
         </DrawerWithExpansion>
         <AppbarWithExapansion
           className={classNames({
-            "jsui-appbar-expanded": !this.state.collapsed
+            'jsui-appbar-expanded': !this.state.collapsed,
           })}
         >
           <button
@@ -222,7 +227,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
                       <Button
                         onClick={() =>
                           window.location.replace(
-                            "http://localhost:8080/auth/github"
+                            'http://localhost:8080/auth/github'
                           )
                         }
                       >
@@ -237,7 +242,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
         </AppbarWithExapansion>
         <ContentContainer
           className={classNames({
-            "jsui-content-expanded": !this.state.collapsed
+            'jsui-content-expanded': !this.state.collapsed,
           })}
         >
           {this.props.children}

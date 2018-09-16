@@ -11,7 +11,7 @@ import {
 import Layout from '../components/Layouts';
 import {
   RepositoriesController,
-  NewsItemController,
+  NewsItemsController,
   TalksController,
 } from '@jsaf/controller';
 import { HeroItem } from '../components/HeroItem';
@@ -139,7 +139,7 @@ const Index: React.SFC = () => {
             <Typography type={'h3'} margin={10}>
               Latest Dev News
             </Typography>
-            <NewsItemController>
+            <NewsItemsController>
               {({ data, loading }) => {
                 if (loading) {
                   return <h1>loading</h1>;
@@ -157,7 +157,7 @@ const Index: React.SFC = () => {
                   </div>
                 );
               }}
-            </NewsItemController>
+            </NewsItemsController>
           </ContentContainer>
           <ContentContainer>
             <Typography type={'h3'} margin={10}>
