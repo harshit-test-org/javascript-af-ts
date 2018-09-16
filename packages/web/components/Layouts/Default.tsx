@@ -10,6 +10,7 @@ import NewsIcon from '../../icons/NewsIcon';
 import DrawerOpenIcon from '../../icons/DrawerOpenIcon';
 import DrawerCloseIcon from '../../icons/DrawerCloseIcon';
 import { User } from '@jsaf/controller';
+import Link from 'next/link';
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -162,40 +163,58 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           className={classNames({
             'jsui-drawer-collapsed': this.state.collapsed,
           })}
-          logo={'/static/img/logo.svg'}
+          logo={
+            '/static/img/logo.svg'
+          }
         >
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              'jsui-draweritem-collapsed': this.state.collapsed,
-            })}
-            icon={<HomeIcon />}
-          >
-            Repositories
-          </DrawerMenuItemWithExpansion>
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              'jsui-draweritem-collapsed': this.state.collapsed,
-            })}
-            icon={<HeadPhonesIcon />}
-          >
-            Talks
-          </DrawerMenuItemWithExpansion>
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              'jsui-draweritem-collapsed': this.state.collapsed,
-            })}
-            icon={<TrendingIcon />}
-          >
-            Featured
-          </DrawerMenuItemWithExpansion>
-          <DrawerMenuItemWithExpansion
-            className={classNames({
-              'jsui-draweritem-collapsed': this.state.collapsed,
-            })}
-            icon={<NewsIcon />}
-          >
-            News
-          </DrawerMenuItemWithExpansion>
+          <Link href="/repos">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<HomeIcon />}
+              >
+                Repositories
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
+          <Link href="/talks">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<HeadPhonesIcon />}
+              >
+                Talks
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
+          <Link href="/featured">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<TrendingIcon />}
+              >
+                Featured
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
+          <Link href="/news">
+            <a>
+              <DrawerMenuItemWithExpansion
+                className={classNames({
+                  'jsui-draweritem-collapsed': this.state.collapsed,
+                })}
+                icon={<NewsIcon />}
+              >
+                News
+              </DrawerMenuItemWithExpansion>
+            </a>
+          </Link>
         </DrawerWithExpansion>
         <AppbarWithExapansion
           className={classNames({
