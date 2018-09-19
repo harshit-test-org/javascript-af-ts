@@ -147,6 +147,10 @@ const AppbarWithExapansion = styled(Appbar)`
   }
 `;
 
+const A = styled.a`
+  text-decoration: none;
+`
+
 class Layout extends React.Component<{}, { collapsed: boolean }> {
   state = {
     collapsed: true,
@@ -168,7 +172,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
           }
         >
           <Link href="/repos">
-            <a>
+            <A>
               <DrawerMenuItemWithExpansion
                 className={classNames({
                   'jsui-draweritem-collapsed': this.state.collapsed,
@@ -177,10 +181,10 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
               >
                 Repositories
               </DrawerMenuItemWithExpansion>
-            </a>
+            </A>
           </Link>
           <Link href="/talks">
-            <a>
+            <A>
               <DrawerMenuItemWithExpansion
                 className={classNames({
                   'jsui-draweritem-collapsed': this.state.collapsed,
@@ -189,10 +193,10 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
               >
                 Talks
               </DrawerMenuItemWithExpansion>
-            </a>
+            </A>
           </Link>
           <Link href="/featured">
-            <a>
+            <A>
               <DrawerMenuItemWithExpansion
                 className={classNames({
                   'jsui-draweritem-collapsed': this.state.collapsed,
@@ -201,10 +205,10 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
               >
                 Featured
               </DrawerMenuItemWithExpansion>
-            </a>
+            </A>
           </Link>
           <Link href="/news">
-            <a>
+            <A>
               <DrawerMenuItemWithExpansion
                 className={classNames({
                   'jsui-draweritem-collapsed': this.state.collapsed,
@@ -213,7 +217,7 @@ class Layout extends React.Component<{}, { collapsed: boolean }> {
               >
                 News
               </DrawerMenuItemWithExpansion>
-            </a>
+            </A>
           </Link>
         </DrawerWithExpansion>
         <AppbarWithExapansion

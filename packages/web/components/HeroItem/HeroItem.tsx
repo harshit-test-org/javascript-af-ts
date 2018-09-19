@@ -1,6 +1,6 @@
-import * as React from "react";
-import styled from "styled-components";
-import { Typography } from "javascript-af-ui";
+import * as React from 'react';
+import styled from 'styled-components';
+import { Typography } from 'javascript-af-ui';
 
 interface Props {
   image?: string;
@@ -27,14 +27,14 @@ const HeroCard = styled.div`
     background: ${(props: Props) => props.bgColor};
     opacity: 0.75;
   }
-  h3, h4 {
+  h1,h2, h3 {
     margin: 2vw;
     z-index: 1;
   }
 `;
 
 export const HeroItem: React.SFC<Props> = props => {
-  const { bgColor, image, heading = "h3", children } = props;
+  const { bgColor, image, heading = 'h3', children } = props;
   return (
     <HeroCard bgColor={bgColor} image={image}>
       <Typography type={heading as any} color="#fff">

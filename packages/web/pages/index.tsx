@@ -75,24 +75,25 @@ const Index: React.SFC = () => {
     <Layout>
       <HeroTop>
         <HeroItem
+          heading={'xl'}
           bgColor={shuffled[0]}
           image="https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7335ddddbdb2e401ce4f50507524d900&auto=format&fit=crop&w=1050&q=80"
         >
           Zeit released v2 of hyper terminal
         </HeroItem>
         <HeroItem
-          heading="h4"
+          heading="h3"
           bgColor={shuffled[1]}
           image="https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7335ddddbdb2e401ce4f50507524d900&auto=format&fit=crop&w=1050&q=80"
         >
           Nextjs hit v6.1.1
         </HeroItem>
-        <HeroItem bgColor={shuffled[2]} heading="h4">
+        <HeroItem bgColor={shuffled[2]} heading="h3">
           Apollo teased the defer features incoming
         </HeroItem>
         <HeroItem
           bgColor={shuffled[3]}
-          heading="h4"
+          heading="h3"
           image="https://images.unsplash.com/photo-1479920252409-6e3d8e8d4866?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7335ddddbdb2e401ce4f50507524d900&auto=format&fit=crop&w=1050&q=80"
         >
           Andrew Clark gave demo with {"'"}

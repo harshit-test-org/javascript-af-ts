@@ -99,4 +99,8 @@ server.applyMiddleware({ app, cors: corsMW, path: '/graphql' });
 app.listen(8080, () => {
   // tslint:disable-next-line
   console.log(`Server started on http://localhost:8080`);
+  // tslint:disable-next-line
+  console.log(`Graphql endpoint is up at http://localhost:8080/graphql`);
+   
+  
 });
