@@ -19,6 +19,7 @@ import shuffle from 'lodash.shuffle';
 import { HERO_COLORS } from '../constants';
 import styled from 'styled-components';
 import { NewsItem } from '../components/NewsItem';
+import { TalkItem } from '../components/TalkItem';
 
 const shuffled = shuffle(HERO_COLORS);
 
@@ -176,21 +177,11 @@ const Index: React.SFC = () => {
                 return (
                   <CardHorizontalScroller>
                     {data.map(item => (
-                      <Card
+                      <TalkItem
                         key={item.id}
-                        elevation={2}
-                        style={{
-                          maxWidth: '300px',
-                        }}
-                      >
-                        <CardHeader title={item.title} />
-                        <CardContent>
-                          <Typography>{item.slug}</Typography>
-                        </CardContent>
-                        <CardActions>
-                          <Button>View</Button>
-                        </CardActions>
-                      </Card>
+                        title={item.title}
+                        slug={item.slug}
+                      />
                     ))}
                   </CardHorizontalScroller>
                 );
