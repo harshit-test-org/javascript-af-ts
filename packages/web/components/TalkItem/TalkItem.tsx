@@ -30,13 +30,17 @@ export const TalkItem: React.SFC<Props> = props => {
         maxWidth: '300px',
       }}
     >
-      <CardHeader title={title} />
+      <Link href={`/t/${slug}`}>
+        <A>
+          <CardHeader title={title} />
+        </A>
+      </Link>
       <CardContent>
         <Typography>{slug}</Typography>
       </CardContent>
       <CardActions>
         <Link href={`/t/${slug}`}>
-          <Button>View!!</Button>
+          <Button>View</Button>
         </Link>
       </CardActions>
     </Card>
