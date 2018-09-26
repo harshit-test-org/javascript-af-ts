@@ -148,7 +148,11 @@ const Index: React.SFC = () => {
                 return (
                   <div style={{ margin: '0 12px' }}>
                     {data.map(item => (
-                      <NewsItem key={item.id} title={item.title}>
+                      <NewsItem
+                        key={item.id}
+                        title={item.title}
+                        slug={item.slug}
+                      >
                         {item.content
                           .split(' ')
                           .slice(0, 30)
