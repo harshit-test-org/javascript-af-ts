@@ -1,23 +1,16 @@
 import * as React from 'react';
-import {
-  Button,
-  Typography,
-  CardHorizontalScroller,
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-} from 'javascript-af-ui';
-import Layout from '../components/Layouts';
+import { Typography, CardHorizontalScroller } from 'javascript-af-ui';
 import {
   RepositoriesController,
   NewsItemsController,
   TalksController,
 } from '@jsaf/controller';
-import { HeroItem } from '../components/HeroItem';
 import shuffle from 'lodash.shuffle';
-import { HERO_COLORS } from '../constants';
 import styled from 'styled-components';
+import { HERO_COLORS } from '../constants';
+import Layout from '../components/Layouts';
+import { HeroItem } from '../components/HeroItem';
+import { RepoItem } from '../components/RepoItem';
 import { NewsItem } from '../components/NewsItem';
 import { TalkItem } from '../components/TalkItem';
 
@@ -116,21 +109,12 @@ const Index: React.SFC = () => {
                 return (
                   <CardHorizontalScroller>
                     {data.map(item => (
-                      <Card
+                      <RepoItem
                         key={item.id}
-                        elevation={2}
-                        style={{
-                          maxWidth: '300px',
-                        }}
-                      >
-                        <CardHeader title={item.githubName} />
-                        <CardContent>
-                          <Typography>{item.description}</Typography>
-                        </CardContent>
-                        <CardActions>
-                          <Button>View</Button>
-                        </CardActions>
-                      </Card>
+                        title={item.githubName}
+                        description={item.description}
+                        slug={item.slug}
+                      />
                     ))}
                   </CardHorizontalScroller>
                 );
