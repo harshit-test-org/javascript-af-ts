@@ -19,19 +19,23 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   image?: string;
   title: string;
   description: string;
-  slug: string;
+  githubUser: string;
+  githubRepo: string;
 }
 
 export const RepoItem: React.SFC<Props> = props => {
-  const { title, description, slug, children, ...others } = props;
+  const {
+    title,
+    description,
+    githubUser,
+    githubRepo,
+    children,
+    ...others
+  } = props;
+
   return (
-    <Card
-      elevation={2}
-      style={{
-        maxWidth: '300px',
-      }}
-    >
-      <Link href={`/r/${slug}`}>
+    <Card elevation={2} style={{ maxWidth: '300px' }}>
+      <Link href={`/r/${githubUser}/${githubRepo}`}>
         <A>
           <CardHeader title={title} />
         </A>
@@ -40,7 +44,7 @@ export const RepoItem: React.SFC<Props> = props => {
         <Typography>{description}</Typography>
       </CardContent>
       <CardActions>
-        <Link href={`/r/${slug}`}>
+        <Link href={`/r/${githubUser}/${githubRepo}`}>
           <Button>View</Button>
         </Link>
       </CardActions>

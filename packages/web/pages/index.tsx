@@ -113,7 +113,8 @@ const Index: React.SFC = () => {
                         key={item.id}
                         title={item.githubName}
                         description={item.description}
-                        slug={item.slug}
+                        githubUser={item.githubOwner}
+                        githubRepo={item.githubName}
                       />
                     ))}
                   </CardHorizontalScroller>
